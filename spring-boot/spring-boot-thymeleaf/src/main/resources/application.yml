@@ -1,3 +1,12 @@
 # Port
 server:
   port: 8090
+  
+# Thymeleaf (1. 루트폴더 변경, 2. 타임리프 캐시 설정 변경)
+spring:
+  thymeleaf:
+    prefix: classpath:templates/thymeleaf/
+    check-template-location: true
+    suffix: .html
+    mode: HTML
+    cache: false

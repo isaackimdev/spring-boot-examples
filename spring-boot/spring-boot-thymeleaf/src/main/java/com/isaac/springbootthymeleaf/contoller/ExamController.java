@@ -8,6 +8,6 @@ public class ExamController {
 
     @RequestMapping("/hello")
     public String hello() {
-        return "/hello.html";
+        return "hello"; // "hello", "/hello", "hello.html"
     }
 }
