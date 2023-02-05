@@ -1,7 +1,8 @@
-# spring
+# Spring & Spring boot example projects
 
-## Project
+## Projects
 
 spring
 
 spring-boot
+- thymeleaf
