@@ -9,5 +9,13 @@
 </head>
 <body>
     <h3 th:text="Test">Hello World, Thymeleaf Project.</h3>
+
+    <div th:with="firstValue=${'타임리프'}, secondValue=${'변수2'}">
+        <h3 th:text="${firstValue}"></h3>
+        <h3 th:text="${firstValue == '' ? '빈 값입니다.' : firstValue }"></h3>
+        <h3 th:text="${secondValue}"></h3>
+        <h3 th:if="${secondValue != '변수2'}" th:text="${secondValue}"></h3>
+    </div>
+
 </body>
 </html>
