@@ -33,4 +33,11 @@ public class ExamController {
         modelAndView.setViewName("mv-test");
         return modelAndView;
     }
+
+    @RequestMapping("/utext")
+    public String utext(Model model) {
+        model.addAttribute("tag","<h2>태그 전달하기</h2>");
+        return "utext";
+    }
+
 }
