@@ -56,4 +56,11 @@ public class ExamController {
         System.out.println("test : " +numtest);
         return mav;
     }
+
+    // Form
+    @RequestMapping("/form1")
+    public String form1(Model model) {
+        return "form1";
+    }
+
 }
