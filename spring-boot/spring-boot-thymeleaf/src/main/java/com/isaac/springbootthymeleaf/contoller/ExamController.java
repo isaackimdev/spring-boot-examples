@@ -2,6 +2,7 @@ package com.isaac.springbootthymeleaf.contoller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,4 +34,21 @@ public class ExamController {
         modelAndView.setViewName("mv-test");
         return modelAndView;
     }
+
+    @RequestMapping("/pv/{num}")
+    public String pv1(Model model, @PathVariable(name = "num") int numtest) {
+        model.addAttribute("num", numtest);
+        System.out.println("test : " +numtest);
+        return "pv1";
+    }
+
+    @RequestMapping("/pv-mav/{num}")
+    public ModelAndView pv1mav(ModelAndView mav, @PathVariable(name = "num") int numtest) {
+        mav.addObject("num", numtest);
+        mav.setViewName("pv1");
+        System.out.println("test : " +numtest);
+        return mav;
+    }
+
+
 }
