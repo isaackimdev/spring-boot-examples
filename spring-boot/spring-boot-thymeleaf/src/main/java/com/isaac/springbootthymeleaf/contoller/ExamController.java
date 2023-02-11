@@ -35,6 +35,13 @@ public class ExamController {
         return modelAndView;
     }
 
+    @RequestMapping("/utext")
+    public String utext(Model model) {
+        model.addAttribute("tag","<h2>태그 전달하기</h2>");
+        return "utext";
+    }
+
+
     @RequestMapping("/pv/{num}")
     public String pv1(Model model, @PathVariable(name = "num") int numtest) {
         model.addAttribute("num", numtest);
@@ -49,6 +56,4 @@ public class ExamController {
         System.out.println("test : " +numtest);
         return mav;
     }
-
-
 }
