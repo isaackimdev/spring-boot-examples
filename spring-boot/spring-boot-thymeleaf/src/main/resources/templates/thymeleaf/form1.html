@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -9,8 +9,10 @@
 </head>
 <body>
     <h1>Hello World - Form Test</h1>
-    <form action="">
-
+    <h1 th:text=" 'form에서 넘어온 값 : ' + ${data1} + '입니다.' "></h1>
+    <form action="/form1" method="post">
+        <input type="text" name="data1" th:value="${data1}">
+        <input type="submit" value="submit">
     </form>
 </body>
 </html>
