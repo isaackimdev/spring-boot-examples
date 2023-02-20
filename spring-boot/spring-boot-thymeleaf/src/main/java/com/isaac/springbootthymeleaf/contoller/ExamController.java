@@ -71,5 +71,30 @@ public class ExamController {
         return "form1";
     }
 
+    @RequestMapping(value = "/multi1", method = RequestMethod.GET)
+    public ModelAndView multiFormPage(ModelAndView mav) {
+        mav.addObject("msg", "여러 개 input 값 입력 후 전송 버튼 클릭!");
+        mav.setViewName("multi1");
+        return mav;
+    }
+
+    @RequestMapping(value ="/multi1", method = RequestMethod.POST)
+    public ModelAndView multiFormSend(
+            @RequestParam("id") String id,
+            @RequestParam("name") String name,
+            @RequestParam("email") String email,
+            @RequestParam("age") Integer age,
+            @RequestParam("gender") String gender,
+            ModelAndView mav) {
+        mav.addObject("id", id);
+        mav.addObject("name", name);
+        mav.addObject("email", email);
+        mav.addObject("age", age);
+        mav.addObject("gender", gender);
+        mav.setViewName("multi1");
+        return mav;
+    }
+
+
 
 }
