@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>th block</title>
+</head>
+<body>
+
+    <th:block th:if="${#strings.equals(account, '회원')}">
+      <h2>Welcome!</h2>
+    </th:block>
+    <th:block th:unless="${#strings.equals(account, '회원')}">
+      <h2>Nice to meet you!</h2>
+    </th:block>
+
+</body>
+</html>
