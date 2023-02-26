@@ -124,7 +124,7 @@ public class ExamController {
 
     @RequestMapping(value = "/th-block", method = RequestMethod.GET)
     public ModelAndView viewThBlock(ModelAndView mav) {
-        mav.addObject("account","회원");
+        mav.addObject("account","비회원");
         mav.setViewName("th-block");
         return mav;
     }
