@@ -1,0 +1,52 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      cookie:
+        secure: true
+        http-only: true
+#file:
+#  upload-directory: ./upload/file/images
+spring:
+  config:
+    import: classpath:db.properties
+#  servlet:
+#    multipart:
+#      enabled: true
+#      max-file-size: 500MB
+#      max-request-size: 512MB
+#      location: ./uploaded_files
+  # ??? ?? ??
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${db.host}
+    username: ${db.username}
+    password: ${db.password}
+    hikari:
+      pool-name: jpa-hikari-pool
+      maximum-pool-size: 5
+      jdbc-url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+      driver-class-name: ${spring.datasource.driver-class-name}
+      data-source-properties:
+        rewriteBatchedStatements: true
+  # JPA ??
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: 'update' # ?? ?? 'create-drop', ?? ?? 'update' ?? ???? ?, ?? validate
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        hbm2ddl.import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        default_batch_fetch_size: ${chunkSize:100}
+        jdbc.batch_size: 20
+        order_inserts: true
+        order_updates: true
+        format_sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
