@@ -33,6 +33,12 @@
          <input type="submit" value="send">
      </form>
 
-
+    <h3>result</h3>
+    <table border="1">
+        <tr th:each="foodItem, idx :  ${foodList}">
+            <td th:text="${idx.index}"></td>
+            <td th:text="${foodItem}"></td>
+        </tr>
+    </table>
 </body>
 </html>
