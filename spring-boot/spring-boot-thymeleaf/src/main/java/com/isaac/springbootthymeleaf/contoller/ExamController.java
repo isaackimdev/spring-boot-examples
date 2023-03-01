@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class ExamController {
 
@@ -126,6 +128,22 @@ public class ExamController {
     public ModelAndView viewThBlock(ModelAndView mav) {
         mav.addObject("account","비회원");
         mav.setViewName("th-block");
+        return mav;
+    }
+
+    // CheckBox
+    @RequestMapping(value = "/checkbox", method = RequestMethod.GET)
+    public ModelAndView viewCheckBox(ModelAndView mav) {
+        mav.setViewName("checkbox");
+        return mav;
+    }
+
+    @RequestMapping(value = "checkbox", method = RequestMethod.POST)
+    public ModelAndView postCheckBox(
+            @RequestParam(value = "food", required = false) List<String> foodList,
+            ModelAndView mav) {
+        mav.addObject("foodList", foodList);
+        mav.setViewName("checkbox");
         return mav;
     }
 }
