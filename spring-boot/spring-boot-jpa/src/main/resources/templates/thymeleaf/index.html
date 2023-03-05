@@ -9,13 +9,17 @@
             display: flex;
             justify-content: center;    /* 좌우 기준 */
             align-items: center;        /* 상하 기준 */
+            flex-direction: column;     /* 자식요소 수직정렬 */
+        }
+        main > button {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <main>
-        <button>JPA Member List</button>
-        <button>JPA Member Registration</button>
+        <button onclick="location.href='/jpa/memberList';">JPA Member List</button>
+        <button onclick="location.href='/jpa/memberWriteForm';">JPA Member Registration</button>
     </main>
 </body>
 </html>
