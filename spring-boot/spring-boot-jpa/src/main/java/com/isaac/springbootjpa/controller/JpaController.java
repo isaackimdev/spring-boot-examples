@@ -1,6 +1,7 @@
 package com.isaac.springbootjpa.controller;
 
 
+import com.isaac.springbootjpa.dto.MemberDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,23 @@ public class JpaController {
         // 등록 처리(신규회원)
         return "jpa/memberWriteForm";
     }
+
+    /**
+     * 회원 등록
+     * */
+    @RequestMapping(value = "/jpa/memberWriteOk", method = RequestMethod.POST)
+    public String insertMember(MemberDTO memberDTO, Model model) {
+
+        try {
+            // 등록 처리
+        } catch (Exception e) {
+            // err
+        }
+
+        return "";
+    }
+
+
 
     /**
      * 회원 List 페이지

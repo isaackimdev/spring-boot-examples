@@ -51,7 +51,10 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-# Thymeleaf
+  devtools:
+    livereload:
+      enabled: true
+  # Thymeleaf
   thymeleaf:
     prefix: classpath:templates/thymeleaf/
     check-template-location: true

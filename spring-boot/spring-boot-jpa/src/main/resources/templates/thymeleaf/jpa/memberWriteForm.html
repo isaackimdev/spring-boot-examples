@@ -3,12 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Member Registration Form</title>
+    <style>
+        form > label {
+            display: inline-block;
+            width: 120px;
+        }
+        form > input {
+            padding: 4px;
+            margin-bottom: 4px;
+        }
+    </style>
 </head>
 <body>
     <h2>Member Registration Form</h2>
 
-    <form>
+    <form action="/jpa/memberWriteOk" method="post" id="memberWriteForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+        <br>
 
+        <label for="id">ID</label>
+        <input type="text" id="id" name="id">
+        <br>
+
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone">
+        <br>
     </form>
+
+    <button type="submit" form="memberWriteForm">회원등록</button>
+
 </body>
 </html>
