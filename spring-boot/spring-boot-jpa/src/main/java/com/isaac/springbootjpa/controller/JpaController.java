@@ -2,6 +2,7 @@ package com.isaac.springbootjpa.controller;
 
 
 import com.isaac.springbootjpa.dto.MemberDTO;
+import com.isaac.springbootjpa.entity.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +27,19 @@ public class JpaController {
 
         try {
             // 등록 처리
+            System.out.println(memberDTO.toString());
+            // 1. DTO -> Entity 로 변환
+            Member member = memberDTO.toEntity();
+            System.out.println(member.toString());
+
+            // 2. Repository -> Entity -> DB save
+
+
         } catch (Exception e) {
             // err
         }
 
-        return "";
+        return "redirect:/";
     }
 
 

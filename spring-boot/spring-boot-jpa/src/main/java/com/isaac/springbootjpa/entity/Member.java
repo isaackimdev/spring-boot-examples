@@ -1,14 +1,31 @@
-package com.isaac.springbootjpa.dto;
+package com.isaac.springbootjpa.entity;
 
-import com.isaac.springbootjpa.entity.Member;
 
-public class MemberDTO {
-    // data 를 주고 받는 객체
+import javax.persistence.*;
+
+@Entity
+public class Member {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // number 자동 증가
     private int num;
+    @Column
     private String name;
+    @Column
     private String id;
+    @Column
     private String phone;
 
+    public Member() { }
+
+    public Member(int num, String name, String id, String phone) {
+        this.num = num;
+        this.name = name;
+        this.id = id;
+        this.phone = phone;
+    }
+
+    // getter, setter
     public int getNum() {
         return num;
     }
@@ -43,18 +60,11 @@ public class MemberDTO {
 
     @Override
     public String toString() {
-        return "MemberDTO{" +
+        return "Member{" +
                 "num=" + num +
                 ", name='" + name + '\'' +
                 ", id='" + id + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';
     }
-
-    // toEntity()
-    public Member toEntity() {
-        // DTO -> Entity 변환
-        return new Member( num, name, id, phone);
-    }
-
 }
