@@ -36,6 +36,20 @@
         </table>
     </div>
 
+    <p>
+        총 레코드 갯수 <span th:text="${members.totalElements}">4</span> /
+        현재 페이지 <span th:text="${members.number + 1}">1</span> /
+        <!--  ${members.pageable.pageNumber} 이렇게 사용하는 경우도 있음.      -->
+
+        총 페이지 <sapn th:text="${members.totalPages}">5</sapn>
+    </p>
+
+    <ul>
+        <li><a href="#">Previous</a></li>
+        <li>/</li>
+        <li><a href="#">Next</a></li>
+    </ul>
+
     <script>
         function btnDel( num ) {
             // 컨펌 처리
