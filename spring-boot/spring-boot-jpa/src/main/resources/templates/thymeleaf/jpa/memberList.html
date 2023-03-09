@@ -8,27 +8,43 @@
 
     <div>
         <h2>memberList</h2>
-        <p>현재 <span>10</span>명의 회원정보가 등록되었습니다. </p>
+        <p>현재 <span th:text="${#lists.size(members)}">10</span>명의 회원정보가 등록되었습니다. </p>
 
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th width="50"></th>
                     <th>Name</th>
                     <th>Id</th>
                     <th>Phone</th>
+                    <th>Edit</th>
+                    <th>Del</th>
+                    <th>Del</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>1</th>
-                    <th>홍길동</th>
-                    <th>mr.hong</th>
-                    <th>010-1111-5555</th>
+                <tr th:each="member : ${members}">
+                    <th th:text="${member.num}">1</th>
+                    <th th:text="${member.name}">홍길동</th>
+                    <th th:text="${member.id}">mr.hong</th>
+                    <th th:text="${member.phone}">010-1111-5555</th>
+                    <th><a href="#" th:href="@{/jpa/memberWrite( num=${member.num} )}">수정</a></th>
+                    <th><a href="#" th:href="@{/jpa/memberDelete( num=${member.num} )}">삭제(바로삭제)</a></th>
+                    <th><a href="#none" th:onclick="btnDel( [[ ${member.num} ]] );">삭제(확인 후 삭제)</a></th>
                 </tr>
             </tbody>
         </table>
     </div>
 
+    <script>
+        function btnDel( num ) {
+            // 컨펌 처리
+            if (confirm(num +"번 회원을 정말 삭제하시겠습니까?") == true) {
+                location.href='/jpa/memberDelete?num=' + num;
+            } else {
+                return;
+            }
+        }
+    </script>
 </body>
 </html>

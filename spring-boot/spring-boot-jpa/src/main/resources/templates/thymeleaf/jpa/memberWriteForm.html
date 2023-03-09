@@ -15,23 +15,36 @@
     </style>
 </head>
 <body>
-    <h2>Member Registration Form</h2>
+    <h2>
+        Member
+            <span th:if="${formTitle} == 'Modification'" th:text="${formTitle}"> </span>
+            <span th:unless="${formTitle} == 'Modification'" th:text="${formTitle}"> </span>
+        Form
+    </h2>
 
-    <form action="/jpa/memberWrite" method="post" id="memberWriteForm">
+<!--    <form action="/jpa/memberWrite" method="post" id="memberWriteForm">-->
+    <form th:action="@{/jpa/memberWrite}" th:object="${memberDTO}" method="POST" id="memberWriteForm">
+        <input type="hidden" name="num" th:field="*{num}">
+
         <label for="name">Name</label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" th:field="*{name}">
         <br>
 
         <label for="id">ID</label>
-        <input type="text" id="id" name="id">
+        <input type="text" id="id" name="id" th:field="*{id}">
         <br>
 
         <label for="phone">Phone</label>
-        <input type="text" id="phone" name="phone">
+        <input type="text" id="phone" name="phone" th:field="*{phone}">
         <br>
+
     </form>
 
-    <button type="submit" form="memberWriteForm">회원등록</button>
+<!--    <button type="submit" form="memberWriteForm">회원등록</button>-->
+    <div th:switch="${formTitle}">
+        <button type="submit" form="memberWriteForm" th:case="Registration">회원등록</button>
+        <button type="submit" form="memberWriteForm" th:case="Modification">회원수정</button>
+    </div>
 
 </body>
 </html>

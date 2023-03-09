@@ -25,6 +25,7 @@ public class JpaController {
 
     /**
      * 회원 등록 Form 페이지
+     * 회원 등록 + 회원 수정
      * */
     @RequestMapping(value = "/jpa/memberWrite", method = RequestMethod.GET)
     public String memberWriteForm(
@@ -33,7 +34,13 @@ public class JpaController {
 
         if ( num != null ) {
             System.out.println(num);
+
+            // 기존 회원 수정
+            Member member = memberRepository.findById(num).orElse(null);
+            model.addAttribute("memberDTO", member);
+            model.addAttribute("formTitle", "Modification");
         } else {
+            // 신규 회원 등록
             model.addAttribute("memberDTO", new MemberDTO());
             model.addAttribute("formTitle", "Registration");
         }
@@ -77,5 +84,18 @@ public class JpaController {
         model.addAttribute("members",members);
         return "jpa/memberList";
     }
+
+    /**
+     * 회원 삭제
+     * */
+    @RequestMapping(value = "/jpa/memberDelete", method = RequestMethod.GET)
+    public String memberDelete(@RequestParam(value = "num", required = false) Integer num) {
+        System.out.println(num);
+
+        memberRepository.deleteById(num);
+
+        return "redirect:/";
+    }
+
 
 }
