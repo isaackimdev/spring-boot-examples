@@ -3,26 +3,48 @@ package com.isaac.springbootjpa.controller;
 
 import com.isaac.springbootjpa.dto.MemberDTO;
 import com.isaac.springbootjpa.entity.Member;
+import com.isaac.springbootjpa.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class JpaController {
+
+    /**
+     * DI
+     * */
+    @Autowired // 고전
+    private MemberRepository memberRepository;
+
+
     /**
      * 회원 등록 Form 페이지
      * */
-    @RequestMapping(value = "/jpa/memberWriteForm", method = RequestMethod.GET)
-    public String memberWriteForm(Model model) {
-        // 등록 처리(신규회원)
+    @RequestMapping(value = "/jpa/memberWrite", method = RequestMethod.GET)
+    public String memberWriteForm(
+            @RequestParam(value = "num", required = false) Integer num,
+            Model model) {
+
+        if ( num != null ) {
+            System.out.println(num);
+        } else {
+            model.addAttribute("memberDTO", new MemberDTO());
+            model.addAttribute("formTitle", "Registration");
+        }
+
         return "jpa/memberWriteForm";
     }
 
     /**
      * 회원 등록
      * */
-    @RequestMapping(value = "/jpa/memberWriteOk", method = RequestMethod.POST)
+    @RequestMapping(value = "/jpa/memberWrite", method = RequestMethod.POST)
     public String insertMember(MemberDTO memberDTO, Model model) {
 
         try {
@@ -33,7 +55,9 @@ public class JpaController {
             System.out.println(member.toString());
 
             // 2. Repository -> Entity -> DB save
-
+            // memberRepository.save(member);
+            Member savedMemeber = memberRepository.save(member); // save() -> sql -> insert, update
+            System.out.println( savedMemeber.toString() );
 
         } catch (Exception e) {
             // err
@@ -49,6 +73,8 @@ public class JpaController {
      * */
     @RequestMapping(value = "/jpa/memberList", method = RequestMethod.GET)
     public String memberList(Model model) {
+        List<Member> members = memberRepository.findAll();
+        model.addAttribute("members",members);
         return "jpa/memberList";
     }
 

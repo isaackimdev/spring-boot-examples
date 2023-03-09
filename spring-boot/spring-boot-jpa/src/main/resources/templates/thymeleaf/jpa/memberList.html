@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Member List</title>
 </head>
 <body>
-  <h2>memberList</h2>
+
+    <div>
+        <h2>memberList</h2>
+        <p>현재 <span>10</span>명의 회원정보가 등록되었습니다. </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th width="50"></th>
+                    <th>Name</th>
+                    <th>Id</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <th>홍길동</th>
+                    <th>mr.hong</th>
+                    <th>010-1111-5555</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </body>
 </html>
