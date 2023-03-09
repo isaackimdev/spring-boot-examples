@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Detail</title>
+</head>
+<body>
+    <h2>Member Detail</h2>
+    <p><a href="#" onclick="history.back(-1); return false;"> ← Back </a>
+        / 아래는 <span th:text="${member.num}">3</span>번 회원의 정보입니다.</p>
+
+    <table border="1" th:object="${member}">
+        <tr>
+            <td>Num</td>
+            <td th:text="${member.num}">3</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td th:text="${member.name}">홍길동</td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td th:text="${member.id}">mr.hong</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td th:text="${member.phone}">010-1234-5678</td>
+        </tr>
+    </table>
+</body>
+</html>

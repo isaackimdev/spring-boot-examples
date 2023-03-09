@@ -25,7 +25,7 @@
             <tbody>
                 <tr th:each="member : ${members}">
                     <th th:text="${member.num}">1</th>
-                    <th th:text="${member.name}">홍길동</th>
+                    <th><a href="#" th:href="@{/jpa/memberDetail( num=${member.num} )}" th:text="${member.name}">홍길동</a></th>
                     <th th:text="${member.id}">mr.hong</th>
                     <th th:text="${member.phone}">010-1111-5555</th>
                     <th><a href="#" th:href="@{/jpa/memberWrite( num=${member.num} )}">수정</a></th>

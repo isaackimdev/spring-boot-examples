@@ -98,4 +98,21 @@ public class JpaController {
     }
 
 
+    /**
+     * 회원 상세 페이지
+     * 
+     */
+    @RequestMapping(value = "/jpa/memberDetail", method = RequestMethod.GET)
+    public String memberDetail(
+            @RequestParam(value = "num", required = false) Integer num,
+            Model model
+    ) {
+        System.out.println(num);
+
+        Member member = memberRepository.findById(num).orElse(null);
+        model.addAttribute("member", member);
+
+        return "jpa/memberDetail";
+    }
+
 }
