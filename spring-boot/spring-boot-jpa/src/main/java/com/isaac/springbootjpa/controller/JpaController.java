@@ -81,7 +81,10 @@ public class JpaController {
      * 회원 List 페이지
      * */
     @RequestMapping(value = "/jpa/memberList", method = RequestMethod.GET)
-    public String memberList(Model model, Pageable pageable) {
+    public String memberList(
+            Model model
+            , Pageable pageable
+            , @RequestParam(value = "searchKeyword", required = false, defaultValue = "") String searchKeyword) {
         // JPA 전체
         // List<Member> members = memberRepository.findAll();
 
@@ -92,7 +95,14 @@ public class JpaController {
         //      import org.springframework.data.domain.Pageable;
         // Sort
         //      import org.springframework.data.domain.Sort;
-        Page<Member> members = memberRepository.findAll( pageable );
+
+        // [1] : 기존 리스트 출력
+        // Page<Member> members = memberRepository.findAll( pageable ); // 전체 조회
+
+        // 검색하기 : findBy'필드명'Containing
+        // [2] : 검색 리스트 출력
+        Page<Member> members = memberRepository.findByNameContaining(searchKeyword, pageable);
+
         /*
         * sub description
         * Pageable 객체를 활용한 Pagination(Paging) 구현

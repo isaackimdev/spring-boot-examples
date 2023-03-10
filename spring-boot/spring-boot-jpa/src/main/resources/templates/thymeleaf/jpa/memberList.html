@@ -8,7 +8,15 @@
 
     <div>
         <h2>memberList</h2>
-        <p>현재 <span th:text="${#lists.size(members)}">10</span>명의 회원정보가 등록되었습니다. </p>
+        <p><a href="/">Main</a>현재 <span th:text="${#lists.size(members)}">10</span>명의 회원정보가 등록되었습니다. </p>
+
+        <!--    Search Form start    -->
+        <form style="padding:10px; border: 1px solid; display: flex; justify-content: flex-end; width: 650px;"
+            th:action="@{/jpa/memberList}" method="get">
+            <label for="searchKeyword">Name : </label>
+            <input text="text" id="searchKeyword" name="searchKeyword">
+            <button type="submit">Search</button>
+        </form>
 
         <table border="1">
             <thead>
@@ -44,10 +52,27 @@
         총 페이지 <sapn th:text="${members.totalPages}">5</sapn>
     </p>
 
-    <ul>
-        <li><a href="#">Previous</a></li>
+    <ul style="list-style: none;">
+
+        <li>
+            <th:block th:if="${members.pageable.pageNumber + 1 } == 1">
+                Previous
+            </th:block>
+            <th:block th:unless="${members.pageable.pageNumber + 1 } == 1">
+                <a href="#" th:href="@{/jpa/memberList(page=${members.pageable.pageNumber - 1 }, size=#{paging.size} )}">Previous</a>
+            </th:block>
+        </li>
+
         <li>/</li>
-        <li><a href="#">Next</a></li>
+
+        <li>
+            <th:block th:if="${members.number+1} == ${members.totalPages}">
+                Next
+            </th:block>
+            <th:block th:unless="${members.number+1} == ${members.totalPages}">
+                <a href="#" th:href="@{/jpa/memberList(page=${members.number + 1 }, size=#{paging.size})}">Next</a>
+            </th:block>
+        </li>
     </ul>
 
     <script>
