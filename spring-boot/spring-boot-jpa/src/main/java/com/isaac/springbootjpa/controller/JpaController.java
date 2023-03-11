@@ -7,6 +7,8 @@ import com.isaac.springbootjpa.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -83,7 +85,7 @@ public class JpaController {
     @RequestMapping(value = "/jpa/memberList", method = RequestMethod.GET)
     public String memberList(
             Model model
-            , Pageable pageable
+            , @PageableDefault(size = 2, sort = "name", direction = Sort.Direction.DESC) Pageable pageable
             , @RequestParam(value = "searchCategory", required = false, defaultValue = "") String searchCategory
             , @RequestParam(value = "searchKeyword", required = false, defaultValue = "") String searchKeyword) {
 
