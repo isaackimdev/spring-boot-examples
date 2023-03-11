@@ -10,5 +10,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface MemberRepository extends JpaRepository<Member, Integer> {
     // Search Member
     Page<Member> findByNameContaining(String name, Pageable pageable);
+    Page<Member> findByIdContaining(String id, Pageable pageable);
+
+    // like search
+    Page<Member> findByPhoneContaining(String phone, Pageable pageable);
+
 
 }

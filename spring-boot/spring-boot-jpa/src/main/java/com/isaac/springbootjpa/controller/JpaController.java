@@ -84,7 +84,13 @@ public class JpaController {
     public String memberList(
             Model model
             , Pageable pageable
+            , @RequestParam(value = "searchCategory", required = false, defaultValue = "") String searchCategory
             , @RequestParam(value = "searchKeyword", required = false, defaultValue = "") String searchKeyword) {
+
+        System.out.println("------------------------------");
+        System.out.println("searchCategory : " + searchCategory);
+        System.out.println("searchKeyword : " + searchKeyword);
+        System.out.println("------------------------------");
         // JPA 전체
         // List<Member> members = memberRepository.findAll();
 
@@ -101,7 +107,21 @@ public class JpaController {
 
         // 검색하기 : findBy'필드명'Containing
         // [2] : 검색 리스트 출력
-        Page<Member> members = memberRepository.findByNameContaining(searchKeyword, pageable);
+        // Page<Member> members = memberRepository.findByNameContaining(searchKeyword, pageable);
+
+        // [3] : 검색 리스트  -> name, id, phone
+        Page<Member> members = null;
+
+        // 검색 카테고리별로 비교하여 해당하는 검색 메서드 호출 -> 문자별 비교는 == 이 아니라 equals 사용.
+        if ( searchCategory.equals("name") ) {
+            members = memberRepository.findByNameContaining(searchKeyword, pageable);
+        } else if ( searchCategory.equals("id") ) {
+            members = memberRepository.findByIdContaining(searchKeyword, pageable);
+        } else if ( searchCategory.equals("phone")  ) {
+            members = memberRepository.findByPhoneContaining(searchKeyword, pageable);
+        } else {
+            members = memberRepository.findAll(pageable);
+        }
 
         /*
         * sub description
