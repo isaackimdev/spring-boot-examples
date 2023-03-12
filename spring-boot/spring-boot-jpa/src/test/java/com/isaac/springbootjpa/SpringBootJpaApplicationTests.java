@@ -57,7 +57,18 @@ class SpringBootJpaApplicationTests {
 		// 5-3
 		// Pageable pageable = PageRequest.of(1, 2, Sort.Direction.DESC, "name");
 		// 5-2 : page 부분은 pageable.getPageNumber() 를 사용할 것. 테스트라서 0으로 사용함.
-		Pageable pageable = PageRequest.of(0, 3, Sort.by("name"));
+		// Pageable pageable = PageRequest.of(0, 3, Sort.by("name"));
+
+		// 6. 다중정렬
+		// 2개 조건을 적용하여 정렬하기 -> 예) 회원 검색 시 나이순(Desc) + 이름순(Asc)
+		// PageableDefault 		-> 하나의 컬럼을 기준으로 정렬을 적용.
+		// PageRequest.of() 	-> 여러 개의 조건을 and 사용하여 정렬에 적용할 수 있음.
+		// 일반적인 쿼리에서
+		//		ORDER by column1 desc, column2 asc;
+		//		컬럼1 기준으로 내림차순, 컬럼2 기준으로 오름차순 시킴
+		//		컬럼1 같은 값은 -> 컬럼2 기준으로 오름차순 시킴
+		//										pageable.getPageNumber()
+		Pageable pageable = PageRequest.of(0, 10, Sort.by("id").descending().and(Sort.by("name")) );
 
 		Page<Member> members = memberRepository.findAll(pageable);
 		members.stream().forEach(member -> {
