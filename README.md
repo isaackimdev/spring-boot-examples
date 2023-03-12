@@ -6,3 +6,4 @@ spring
 
 spring-boot
 - thymeleaf
+- Spring Data JPA
