@@ -121,7 +121,8 @@ public class JpaController {
             members = memberRepository.findByIdContaining(searchKeyword, pageable);
         } else if ( searchCategory.equals("phone")  ) {
             // members = memberRepository.findByPhoneContaining(searchKeyword, pageable);
-            members = memberRepository.findByPhoneLike(searchKeyword + "%", pageable);
+            // members = memberRepository.findByPhoneLike(searchKeyword + "%", pageable);
+            members = memberRepository.findByPhoneStartsWith(searchKeyword, pageable);
         } else {
             members = memberRepository.findAll(pageable);
         }

@@ -32,4 +32,10 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
      * */
     Page<Member> findByPhoneLike(String phone, Pageable pageable);
 
+    // 특정 문자열로 시작하는 단어를 찾는다고 할 때 사용 -> 와일드카드를 사용하지 않는다고 할 때
+    Page<Member> findByPhoneStartsWith(String phone, Pageable pageable);
+
+    // 특정 문자열로 종료하는 단어를 찾는다고 할 떄 사용 -> 와일드카드를 사용하지 않는다고 할 때
+    Page<Member> findByPhoneEndsWith(String phone, Pageable pageable);
+
 }
