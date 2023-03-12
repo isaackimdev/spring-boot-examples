@@ -32,4 +32,12 @@ class SpringBootJpaApplicationTests {
 		});
 	}
 
+	@Test
+	void findByNumGreaterThanEqualOrderByNameDescTest() {
+		Pageable pageable = PageRequest.of(0, 5);
+		Page<Member> members = memberRepository.findByNumGreaterThanEqualOrderByNameDesc(2, pageable);
+		members.stream().forEach(member -> {
+			System.out.println(member.toString());
+		});
+	}
 }

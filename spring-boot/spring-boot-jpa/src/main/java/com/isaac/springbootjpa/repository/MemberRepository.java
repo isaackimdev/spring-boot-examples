@@ -66,7 +66,7 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
     // GreaterThan : >=
     // findByNumGreaterThanEqualOrderByNumAsc( parameter )
     Page<Member> findByNumGreaterThanEqualOrderByNumAsc(Integer num, Pageable pageable);
-
+    Page<Member> findByNumGreaterThanEqualOrderByNameDesc(Integer num, Pageable pageable);
 
 
 }
