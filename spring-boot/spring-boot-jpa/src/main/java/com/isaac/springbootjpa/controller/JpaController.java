@@ -6,6 +6,7 @@ import com.isaac.springbootjpa.entity.Member;
 import com.isaac.springbootjpa.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -130,6 +131,8 @@ public class JpaController {
             // members = memberRepository.findByPhoneStartsWith(searchKeyword, pageable);
             members = memberRepository.findByPhoneEndsWith(searchKeyword, pageable);
         } else {
+            // PageRequest.of 를 사용하여 페이징 처리
+            pageable = PageRequest.of(pageable.getPageNumber(), 3, Sort.by("name"));
             members = memberRepository.findAll(pageable);
         }
 
@@ -156,7 +159,8 @@ public class JpaController {
         System.out.println(members.getPageable());      // number, size, sort 이 3가지 값을 모두 가지고 있음
 
         model.addAttribute("members",members);
-
+        model.addAttribute("searchCategory", searchCategory);
+        model.addAttribute("searchKeyword", searchKeyword);
         return "jpa/memberList";
     }
 
