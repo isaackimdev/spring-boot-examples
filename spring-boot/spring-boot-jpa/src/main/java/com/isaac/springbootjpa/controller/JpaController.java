@@ -85,7 +85,7 @@ public class JpaController {
     @RequestMapping(value = "/jpa/memberList", method = RequestMethod.GET)
     public String memberList(
             Model model
-            , @PageableDefault(size = 2, sort = "name", direction = Sort.Direction.DESC) Pageable pageable
+            , @PageableDefault(size = 3, sort = "name", direction = Sort.Direction.DESC) Pageable pageable
             , @RequestParam(value = "searchCategory", required = false, defaultValue = "") String searchCategory
             , @RequestParam(value = "searchKeyword", required = false, defaultValue = "") String searchKeyword) {
 
@@ -120,7 +120,8 @@ public class JpaController {
         } else if ( searchCategory.equals("id") ) {
             members = memberRepository.findByIdContaining(searchKeyword, pageable);
         } else if ( searchCategory.equals("phone")  ) {
-            members = memberRepository.findByPhoneContaining(searchKeyword, pageable);
+            // members = memberRepository.findByPhoneContaining(searchKeyword, pageable);
+            members = memberRepository.findByPhoneLike(searchKeyword + "%", pageable);
         } else {
             members = memberRepository.findAll(pageable);
         }

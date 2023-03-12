@@ -19,7 +19,7 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 
 
     /**
-     * like search
+     * like search - % searchKeyword %
      * */
     // Search Member
     Page<Member> findByNameContaining(String name, Pageable pageable);
@@ -27,5 +27,9 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
     // like search
     Page<Member> findByPhoneContaining(String phone, Pageable pageable);
 
+    /**
+     * like search 2 - saerchKeyword + %
+     * */
+    Page<Member> findByPhoneLike(String phone, Pageable pageable);
 
 }
