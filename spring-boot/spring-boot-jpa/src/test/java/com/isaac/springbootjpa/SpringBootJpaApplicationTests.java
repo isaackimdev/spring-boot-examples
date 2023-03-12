@@ -74,6 +74,12 @@ class SpringBootJpaApplicationTests {
 		members.stream().forEach(member -> {
 			System.out.println(member);
 		});
+	}
 
+	@Test
+	public void jpqlTest1() {
+		memberRepository.findByNameIsaac("jinsol", PageRequest.of(0, 3)).stream().forEach(member -> {
+			System.out.println(member.toString());
+		});
 	}
 }
