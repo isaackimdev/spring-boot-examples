@@ -118,11 +118,17 @@ public class JpaController {
         if ( searchCategory.equals("name") ) {
             members = memberRepository.findByNameContaining(searchKeyword, pageable);
         } else if ( searchCategory.equals("id") ) {
-            members = memberRepository.findByIdContaining(searchKeyword, pageable);
+            // % %
+            // members = memberRepository.findByIdContaining(searchKeyword, pageable);
+            // 대소문자 구분
+            members = memberRepository.findByIdContains(searchKeyword, pageable);
+
+
         } else if ( searchCategory.equals("phone")  ) {
             // members = memberRepository.findByPhoneContaining(searchKeyword, pageable);
             // members = memberRepository.findByPhoneLike(searchKeyword + "%", pageable);
-            members = memberRepository.findByPhoneStartsWith(searchKeyword, pageable);
+            // members = memberRepository.findByPhoneStartsWith(searchKeyword, pageable);
+            members = memberRepository.findByPhoneEndsWith(searchKeyword, pageable);
         } else {
             members = memberRepository.findAll(pageable);
         }
