@@ -84,7 +84,9 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
     // 메서드 호출 시 제일 먼저 @Query 애너테이션의 JPQL 쿼리를 찾는다.
 
     // [1] : 회원 이름으로 검색하기 -> @Query
-    @Query( "SELECT m FROM Member m WHERE m.name = ?1" ) // 세미콜론(;) 넣으면 오류 남.
-    Page<Member> findByNameIsaac(String name, Pageable pageable);
+    // @Query( "SELECT m FROM Member m WHERE m.name = ?1 ORDER BY m.num DESC" ) // 세미콜론(;) 넣으면 오류 남.
+
+    @Query( "SELECT m FROM Member m WHERE m.name LIKE %?1% ORDER BY m.name ASC ")
+    Page<Member> findByNameQuery1(String name, Pageable pageable);
 
 }
