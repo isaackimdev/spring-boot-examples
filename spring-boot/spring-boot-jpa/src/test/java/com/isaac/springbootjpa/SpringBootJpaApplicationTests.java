@@ -19,28 +19,28 @@ class SpringBootJpaApplicationTests {
 	MemberRepository memberRepository;
 
 	// Condition, Sort
-	@Test
-	void contextLoads() {
-		Pageable pageable = PageRequest.of(0, 5);	// Pageable Test
-		Page<Member> members = memberRepository.findByNumGreaterThanEqualOrderByNumAsc(6, pageable);
-		members.stream().forEach(member -> {
-			System.out.println(member.toString());
-		});
-		System.out.println("----------");
-		List<Member> list = memberRepository.findAll();
-		list.stream().forEach(member -> {
-			System.out.println(member.toString());
-		});
-	}
+//	@Test
+//	void contextLoads() {
+//		Pageable pageable = PageRequest.of(0, 5);	// Pageable Test
+//		Page<Member> members = memberRepository.findByNumGreaterThanEqualOrderByNumAsc(6, pageable);
+//		members.stream().forEach(member -> {
+//			System.out.println(member.toString());
+//		});
+//		System.out.println("----------");
+//		List<Member> list = memberRepository.findAll();
+//		list.stream().forEach(member -> {
+//			System.out.println(member.toString());
+//		});
+//	}
 
-	@Test
-	void findByNumGreaterThanEqualOrderByNameDescTest() {
-		Pageable pageable = PageRequest.of(0, 5);
-		Page<Member> members = memberRepository.findByNumGreaterThanEqualOrderByNameDesc(2, pageable);
-		members.stream().forEach(member -> {
-			System.out.println(member.toString());
-		});
-	}
+//	@Test
+//	void findByNumGreaterThanEqualOrderByNameDescTest() {
+//		Pageable pageable = PageRequest.of(0, 5);
+//		Page<Member> members = memberRepository.findByNumGreaterThanEqualOrderByNameDesc(2, pageable);
+//		members.stream().forEach(member -> {
+//			System.out.println(member.toString());
+//		});
+//	}
 
 	@Test
 	void pageRequestStudy() {
@@ -79,6 +79,15 @@ class SpringBootJpaApplicationTests {
 	@Test
 	public void jpqlTest1() {
 		memberRepository.findByNameQuery1("", PageRequest.of(0, 3)).stream().forEach(member -> {
+			System.out.println(member.toString());
+		});
+	}
+
+	@Test
+	public void findByNameContainsAndNumBetweenOrderByNameTest() {
+		// db problem
+		Pageable pageable = PageRequest.of(0, 5);
+		memberRepository.findByNameContainsAndNumBetweenOrderByName("", 5,6, pageable).stream().forEach(member -> {
 			System.out.println(member.toString());
 		});
 	}

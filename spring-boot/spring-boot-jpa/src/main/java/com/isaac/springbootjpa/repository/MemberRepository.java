@@ -89,4 +89,9 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
     @Query( "SELECT m FROM Member m WHERE m.name LIKE %?1% ORDER BY m.name ASC ")
     Page<Member> findByNameQuery1(String name, Pageable pageable);
 
+
+    // between example
+    Page<Member> findByNameContainsAndNumBetweenOrderByName(String name, int start, int end, Pageable pageable);
+
+
 }
