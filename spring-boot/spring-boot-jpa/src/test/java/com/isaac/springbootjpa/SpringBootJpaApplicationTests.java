@@ -87,8 +87,11 @@ class SpringBootJpaApplicationTests {
 	public void findByNameContainsAndNumBetweenOrderByNameTest() {
 		// db problem
 		Pageable pageable = PageRequest.of(0, 5);
+		// Pageable 설정할 때 정렬 부분도 설정하게 되는데, 메서드명으로 정렬을 세팅을 하면, Pageable 정렬 세팅은 먹지 않는다.
+
 		memberRepository.findByNameContainsAndNumBetweenOrderByName("", 5,6, pageable).stream().forEach(member -> {
 			System.out.println(member.toString());
 		});
 	}
+
 }

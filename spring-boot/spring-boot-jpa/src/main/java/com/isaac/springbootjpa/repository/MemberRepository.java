@@ -4,7 +4,10 @@ import com.isaac.springbootjpa.entity.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 // CrudRepository 또는 JpaRepository 상속.
 // Entity 필요
@@ -92,6 +95,28 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 
     // between example
     Page<Member> findByNameContainsAndNumBetweenOrderByName(String name, int start, int end, Pageable pageable);
+
+
+
+
+    // JPQL 다양한 사용법
+    // [1] : @Query Annotation + JPQL을 사용한 수정 처리
+    // 기본적으로 쿼리 애너테이션을 이용한 수정 처리시에는 추가시켜주는 애너테이션들이 있다.
+    // @Transactional, @Modifying 수정/저장에 제대로 반영하기 위해 필요한 Annotation
+    // 파라미터 바인딩1 : ?1, ?2, ... ?N 과 같은 식으로 바인딩
+    //      순서 기반
+    // 파라미터 바인딩2 : :(콜론)명칭,  :start, :end  과 같은 식으로 바인딩
+    //      명칭 기반 - 권장하는 편
+    @Transactional
+    @Modifying
+    @Query(" UPDATE Member m SET m.name = :name WHERE m.num = :num" )
+    int updateMemberQuery( @Param("name") String name, @Param("num") int num );
+
+    // 반환값에 대하여
+    // int -> 처리된 개수
+
+
+
 
 
 }
