@@ -115,7 +115,10 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
     // 반환값에 대하여
     // int -> 처리된 개수
 
-
+    // [2] : @Query Annotation + JPQL을 사용 -> Like 콜론(:) 파라미터 바인딩
+    // : -> 이름 기반이므로 매개변수의 위치가 달라도 상관 없음
+    @Query( " SELECT m FROM Member m WHERE (m.name LIKE %:name%) AND (m.num BETWEEN :from AND :to) ORDER BY m.name ASC " )
+    Page<Member> findMembersQuery( @Param("name") String name, @Param("from") int from, @Param("to") int to, Pageable pageable);
 
 
 
