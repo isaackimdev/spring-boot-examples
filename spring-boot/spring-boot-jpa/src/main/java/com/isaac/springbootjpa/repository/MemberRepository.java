@@ -121,5 +121,34 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
     Page<Member> findMembersQuery( @Param("name") String name, @Param("from") int from, @Param("to") int to, Pageable pageable);
 
 
+    /**
+     * Exists
+     */
+
+    // 존재 여부 체크하는 방법
+    //  1. 쿼리 메서드 -> existsByName[Id] : 존재여부만 확인하기 때문에 boolean 으로 반환한다.
+    //  2. @Query Annotation + JPQL -> JPQL에서 exists
+    //  3. 대신 Count 쿼리를 사용하여 조회
+
+    // JPA exists
+    boolean existsByName(String name);
+
+    // JPQL count : JPQL 에서는 Exists keyword 사용이 안된다고 함, 그래서 count 사용
+    @Query(
+            "select count(m.num) " +
+            "from Member m " +
+            "where m.name = :name and m.id = :id "
+    )
+    int existsQuery( @Param(value = "name") String name, @Param(value = "id") String id );
+
+    // Native Query
+    // JPA의 사용 목적과 조금 반대되는 부분일 수 있으므로 많이 권장하지는 않는 편
+    // 그러나, 특정 데이터베이스의 함수나 기능을 사용하여 성능향상을 꾀하거나 복잡한 쿼리 지원을 하지 않는 경우 사용 가능
+    // ; -> 세미콜론 사용 X
+    // @Query Annotation + SQL + Option   ->   nativeQuery = true, value = ""
+    // 순수 SQL 에서는 Exists 사용이 가능
+    @Query(nativeQuery = true,
+    value = "select * from member m where m.name like %:searchKeyword% and exists (select 1 from member mm where mm.age < 20) ")
+    Page<Member> selectAllSQL( @Param(value = "searchKeyword") String searchKeyword, Pageable pageable);
 
 }
