@@ -1,5 +1,4 @@
-#Spring boot example
+#Spring boot examples
 
-spring-boot
 - thymeleaf
 - Spring Data JPA
