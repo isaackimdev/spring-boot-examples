@@ -1,5 +1,6 @@
 # Spring boot examples
 
 ## 2.x
+- jpa
 - thymeleaf
-- Spring Data JPA
+- web
