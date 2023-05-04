@@ -1,4 +1,4 @@
-package com.isaac.springweb.controller;
+package com.isaac.springbootweb.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
