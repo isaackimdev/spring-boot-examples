@@ -12,6 +12,6 @@ spring:
     driver-class-name: org.h2.Driver
 
 mybatis:
-  mapper-locations: mybatis/mapper/**/**.xml
-  type-aliases-package: com.isaac.springbootmybatis.mybatis
+  mapper-locations: mybatis/mapper/**/**.xml  # resources path
+  type-aliases-package: com.isaac.springbootmybatis.mapper
 

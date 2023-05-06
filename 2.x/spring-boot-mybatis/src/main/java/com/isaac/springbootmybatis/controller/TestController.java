@@ -1,6 +1,6 @@
 package com.isaac.springbootmybatis.controller;
 
-import com.isaac.springbootmybatis.mybatis.TestMapper;
+import com.isaac.springbootmybatis.mapper.TestMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,4 +14,13 @@ public class TestController {
     public String hello() {
         return String.valueOf(testMapper.totSize("test"));
     }
+
+
+    /**
+     * CRUD Test
+     * */
+
+
+
+
 }

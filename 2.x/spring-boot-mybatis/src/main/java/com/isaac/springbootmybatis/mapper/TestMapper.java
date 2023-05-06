@@ -1,4 +1,4 @@
-package com.isaac.springbootmybatis.mybatis;
+package com.isaac.springbootmybatis.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
