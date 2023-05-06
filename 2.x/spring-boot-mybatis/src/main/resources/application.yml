@@ -6,7 +6,7 @@ spring:
     console:
       enabled: true
   datasource:
-    url: jdbc:h2:~/test/testdb
+    url: jdbc:h2:~/test/testdb;AUTO_SERVER=TRUE
     username: sa
     password: 1234
     driver-class-name: org.h2.Driver
