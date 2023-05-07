@@ -1,26 +1,27 @@
 package com.isaac.springbootmybatis.mapper;
 
-import com.isaac.springbootmybatis.dto.UserDto;
+import com.isaac.springbootmybatis.dto.MemberDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 @Repository
 @Mapper
-public interface UserMapper {
+public interface MemberMapper {
 
     /**
      * select
      * */
     // count
-    Integer getCountOfUser();
+    Integer getCountOfMember();
+    // select All
+    List<MemberDto> getMembers();
 
-    List<Map<String, Object>> getUsers();
+
 
     // insert
-    Integer registerUser(UserDto userDto);
+    Integer registerMember(MemberDto memberDto);
 
 
 }

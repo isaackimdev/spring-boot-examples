@@ -7,7 +7,11 @@ import lombok.ToString;
 @Data
 @Builder
 @ToString
-public class UserDto {
+public class MemberDto {
+
+    private Long id;
     private String name;
     private int age;
+    private String email;
+
 }

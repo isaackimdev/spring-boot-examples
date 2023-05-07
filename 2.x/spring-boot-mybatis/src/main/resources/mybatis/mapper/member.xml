@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.isaac.springbootmybatis.mapper.MemberMapper">
+
+<!-- select -->
+    <select id="getCountOfMember" resultType="Integer">
+        select count(1) from TB_MEMBER;
+    </select>
+
+    <select id="getMembers" resultType="com.isaac.springbootmybatis.dto.MemberDto">
+        select * from TB_MEMBER;
+    </select>
+
+<!--  insert  -->
+    <insert id="registerMember" parameterType="hashmap">
+        insert into TB_MEMBER(name, age, email) values (#{name}, #{age}, #{email})
+    </insert>
+
+</mapper>
