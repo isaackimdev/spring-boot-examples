@@ -4,3 +4,8 @@ server:
 spring:
   jpa:
     open-in-view: false
+  thymeleaf:
+    prefix: classpath:/templates/thymeleaf/
+    check-template-location: true
+    cache: false
+    suffix: .html
