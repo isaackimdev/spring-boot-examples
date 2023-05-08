@@ -5,3 +5,4 @@
 - mybatis
 - thymeleaf
 - web
+- board
