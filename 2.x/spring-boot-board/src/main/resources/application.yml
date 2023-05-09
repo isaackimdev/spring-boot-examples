@@ -5,7 +5,7 @@ spring:
     console:
       enabled: true
   jpa:
-    open-in-view: false
+    open-in-view: false # error resolution
     show-sql: true      # show sql
     hibernate:
       ddl-auto: update
