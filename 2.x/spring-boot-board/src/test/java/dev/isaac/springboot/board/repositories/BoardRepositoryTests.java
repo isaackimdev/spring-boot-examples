@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.html.Option;
@@ -60,6 +61,13 @@ public class BoardRepositoryTests {
     }
 
     // Read All
+    @Test
+    @DisplayName("selectAllPageTest")
+    public void selectAllPageTest() {
+        boardRepository.findAll(PageRequest.of(0, 10)).stream().forEach(System.out::println);
+        System.out.println("--------------------------------------------------");
+        boardRepository.findAll(PageRequest.of(1, 10)).stream().forEach(System.out::println);
+    }
 
     // Update
     @Test
