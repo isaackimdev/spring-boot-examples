@@ -1,10 +1,7 @@
 package dev.isaac.springboot.board.entities;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "TB_BOARD")
 @Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString

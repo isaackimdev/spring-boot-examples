@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -17,9 +18,9 @@ public class BoardRepositoryTests {
 
     // Create
     @Test
-    @DisplayName("Board - insertTest")
+    @DisplayName("insertBoardTest")
     @Transactional
-    public void insertTest() {
+    public void insertBoardTest() {
         boardRepository.save(
                 BoardEntity.builder()
                         .title("안녕하십니까, 운영자 입니다.")
@@ -32,12 +33,12 @@ public class BoardRepositoryTests {
 
     // Read
     @Test
-    @DisplayName("Board - selectOneTest")
-    public void selectOneTest() {
+    @DisplayName("selectBoardTest")
+    public void selectBoardTest() {
         Long id = 1L;
 
-        // Optional<BoardEntity> boardEntity = boardRepository.findById(id);
-        // boardEntity.ifPresent(System.out::println);
+        Optional<BoardEntity> boardEntity = boardRepository.findById(id);
+        boardEntity.ifPresent(System.out::println);
 
         boardRepository.findById(id).ifPresent(System.out::println);
     }
@@ -45,8 +46,29 @@ public class BoardRepositoryTests {
     // Read All
 
     // Update
+    @Test
+    @DisplayName("updateBoardTest")
+    public void updateBoardTest() {
+        Long id = 1L;
+        boardRepository.findById(id).ifPresent(
+                boardEntity -> {
+                    boardEntity.setTitle("안녕하십니까, 운영자입니다. 수정된 제목입니다.");
+                    boardEntity.setContent("반갑습니다. 내용도 수정되었습니다.");
+                    boardEntity.setModifiedDate(LocalDateTime.now());
+                    boardRepository.save(boardEntity);
+                }
+        );
+        boardRepository.findById(id).ifPresent(System.out::println);
+    }
+
 
     // Delete
-
+    @Test
+    @DisplayName("deleteBoardTest")
+    @Transactional
+    public void deleteBoardTest() {
+        Long id = 1L;
+        boardRepository.findById(id).ifPresent(boardEntity -> boardRepository.deleteById(boardEntity.getId()));
+    }
 
 }
