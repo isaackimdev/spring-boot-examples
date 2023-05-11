@@ -21,14 +21,30 @@ public class BoardRepositoryTests {
     @DisplayName("insertBoardTest")
     @Transactional
     public void insertBoardTest() {
-        boardRepository.save(
-                BoardEntity.builder()
-                        .title("안녕하십니까, 운영자 입니다.")
-                        .content("반갑습니다. 저는 운영자입니다.")
-                        .author("운영자")
-                        .createdDate(LocalDateTime.now())
-                        .build()
-        ).toString();
+            boardRepository.save(
+                    BoardEntity.builder()
+                            .title("안녕하십니까, 운영자 입니다.")
+                            .content("반갑습니다. 저는 운영자입니다.")
+                            .author("운영자")
+                            .createdDate(LocalDateTime.now())
+                            .build()
+            );
+    }
+
+    @Test
+    @DisplayName("insertBoardDataSetTest")
+    @Transactional
+    public void insertBoardDataSetTest() {
+        for(int i = 0; i<15; i++) {
+            boardRepository.save(
+                    BoardEntity.builder()
+                            .title("안녕하십니까, 운영자 입니다. [" + i + "]")
+                            .content("반갑습니다. 저는 운영자입니다. [" + i + "]")
+                            .author("운영자")
+                            .createdDate(LocalDateTime.now())
+                            .build()
+            );
+        }
     }
 
     // Read
