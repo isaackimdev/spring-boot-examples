@@ -1,11 +1,20 @@
 package dev.isaac.springboot.board.entities;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "TB_BOARD")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class BoardEntity {
 
     @Id // Primary Key
