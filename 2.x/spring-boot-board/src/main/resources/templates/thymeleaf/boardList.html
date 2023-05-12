@@ -1,13 +1,124 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BoardList</title>
+
+    <style>
+        /* 테이블 스타일 */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 14px;
+            font-weight: 400;
+            text-align: center;
+            line-height: 1.4;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+        }
+
+        th {
+            background-color: #0080ff;
+            color: #fff;
+        }
+
+        td {
+            border-bottom: 1px solid #f2f2f2;
+            color: #000;
+        }
+
+        td a {
+            color: #000;
+            font-weight: 500;
+        }
+
+        td a:hover {
+            color: #0080ff;
+        }
+
+        /* 다크 모드 스타일 */
+        body {
+            background-color: #1a1a1a;
+            color: #e6e6e6;
+        }
+
+        table {
+            border-color: #e6e6e6;
+            box-shadow: 0 0 20px rgba(230, 230, 230, 0.1);
+        }
+
+        th {
+            background-color: #0080ff;
+            color: #e6e6e6;
+        }
+
+        td {
+            border-bottom: 1px solid #2e2e2e;
+            color: #e6e6e6;
+        }
+
+        td a {
+            color: #e6e6e6;
+        }
+
+        td a:hover {
+            color: #0080ff;
+        }
+
+        /* 컨테이너 스타일 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 0;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-weight: 700;
+            text-align: center;
+        }
+    </style>
+
 </head>
 <body>
-    <h2>BoardList</h2>
+
+    <div>
+        <h2>BoardList</h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Created Date</th>
+                <th scope="col">Modified Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Thymeleaf 문법을 사용하여 게시글 목록을 동적으로 생성 -->
+            <tr th:each="board : ${boardList}">
+                <td th:text="${board.id}"></td>
+                <td><a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.title}"></a></td>
+                <td th:text="${board.author}"></td>
+                <td th:text="${board.createdDate}"></td>
+                <td th:text="${board.modifiedDate}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
 </body>
 </html>
+
