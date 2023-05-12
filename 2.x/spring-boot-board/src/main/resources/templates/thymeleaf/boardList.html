@@ -6,7 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BoardList</title>
-
     <style>
         /* 테이블 스타일 */
         table {
@@ -92,7 +91,7 @@
 </head>
 <body>
 
-    <div>
+    <div class="container">
         <h2>BoardList</h2>
 
         <table>
@@ -116,6 +115,29 @@
             </tr>
             </tbody>
         </table>
+
+        <ul style="list-style: none; display: flex; justify-content: space-between">
+            <li>
+                <th:block th:if="${boardList.pageable.pageNumber + 1} == 1">
+                    Previous
+                </th:block>
+                <th:block th:if="${boardList.pageable.pageNumber + 1} != 1">
+                    <a th:href="@{/boardList(page=${boardList.pageable.pageNumber - 1})}">Previous</a>
+                </th:block>
+            </li>
+            <li>
+                1,2,3
+            </li>
+            <li>
+                <th:block th:if="${boardList.pageable.pageNumber + 1 >= boardList.totalPages}">
+                    Next
+                </th:block>
+                <th:block th:if="${boardList.pageable.pageNumber + 1 < boardList.totalPages}">
+                    <a th:href="@{/boardList(page=${boardList.pageable.pageNumber + 1})}">Next</a>
+                </th:block>
+            </li>
+        </ul>
+
     </div>
 
 
