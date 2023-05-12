@@ -2,11 +2,13 @@ package dev.isaac.springboot.board.dtos;
 
 import dev.isaac.springboot.board.entities.BoardEntity;
 import lombok.Builder;
+import lombok.Data;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
 
 @Builder
+@Data
 @ToString
 public class BoardDto {
     private Long id;
@@ -24,8 +26,8 @@ public class BoardDto {
                 .title(boardEntity.getTitle())
                 .content(boardEntity.getContent())
                 .author(boardEntity.getAuthor())
-                .createdDate(boardEntity.getCreatedDate())
-                .modifiedDate(boardEntity.getModifiedDate())
+                .createdDate(boardEntity.getCreatedDate() == null ? null : boardEntity.getCreatedDate())
+                .modifiedDate(boardEntity.getModifiedDate() == null ? null : boardEntity.getModifiedDate())
                 .build();
     }
 }

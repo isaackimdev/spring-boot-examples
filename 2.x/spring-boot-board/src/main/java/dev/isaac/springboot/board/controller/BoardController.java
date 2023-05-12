@@ -17,8 +17,8 @@ public class BoardController {
 
     @RequestMapping(value = "/boardList", method = RequestMethod.GET)
     public String boardList(Model model,
-                            @PageableDefault(size = 10, sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable) {
-
+                            @PageableDefault(size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable) {
+        model.addAttribute("boardList", boardService.findAll(pageable));
         return "boardList";
     }
 

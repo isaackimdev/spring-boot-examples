@@ -19,8 +19,10 @@ import java.util.stream.Collectors;
 public class BoardServiceTests {
     @Autowired
     private BoardRepository boardRepository;
+    @Autowired
+    private BoardService boardService;
 
-    // READ ALL
+    // READ ALL - service code
     @Test
     @DisplayName("findAllPageableTest")
     public void findAllPageableTest() {
@@ -32,6 +34,13 @@ public class BoardServiceTests {
         System.out.println("total elements : " + boardDtoPage.getTotalElements());
         System.out.println("total pages : " + boardDtoPage.getTotalPages());
         boardDtoPage.getContent().stream().forEach(System.out::println);
+    }
+
+    // READ ALL - service applications
+    @Test
+    @DisplayName("findAllTest")
+    public void findAllTest() {
+        boardService.findAll(PageRequest.of(2, 10)).stream().forEach(System.out::println);
     }
 
 }

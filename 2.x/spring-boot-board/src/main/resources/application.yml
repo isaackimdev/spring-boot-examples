@@ -11,10 +11,10 @@ spring:
       ddl-auto: update
 
   thymeleaf:
-    prefix: classpath:/templates/thymeleaf/
+    prefix: classpath:/templates/thymeleaf/ # root directory
     suffix: .html
     check-template-location: true
-    cache: false
+    cache: false # default true / Set the content to be developed to false
     mode: HTML
   datasource:
     driver-class-name: org.h2.Driver
