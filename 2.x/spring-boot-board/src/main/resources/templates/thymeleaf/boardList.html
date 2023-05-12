@@ -125,9 +125,12 @@
                     <a th:href="@{/boardList(page=${boardList.pageable.pageNumber - 1})}">Previous</a>
                 </th:block>
             </li>
-            <li>
-                1,2,3
+
+            <!-- 페이징 -->
+            <li th:each="i : ${#numbers.sequence(0, boardList.totalPages-1)}" th:class="${i == boardList.pageable.pageNumber} ? active">
+                <a th:href="@{/boardList(page=${i})}" th:text="${i+1}"></a>
             </li>
+
             <li>
                 <th:block th:if="${boardList.pageable.pageNumber + 1 >= boardList.totalPages}">
                     Next

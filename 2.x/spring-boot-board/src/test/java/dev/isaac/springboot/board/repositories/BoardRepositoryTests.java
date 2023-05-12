@@ -38,8 +38,8 @@ public class BoardRepositoryTests {
         for(int i = 0; i<15; i++) {
             boardRepository.save(
                     BoardEntity.builder()
-                            .title("안녕하십니까, 운영자 입니다. [" + i + "]")
-                            .content("반갑습니다. 저는 운영자입니다. [" + i + "]")
+                            .title("안녕하십니까, 운영자 입니다. [" + (i + boardRepository.count()) + "]")
+                            .content("반갑습니다. 저는 운영자입니다. [" + (i + boardRepository.count()) + "]")
                             .author("운영자")
                             .createdDate(LocalDateTime.now())
                             .build()
