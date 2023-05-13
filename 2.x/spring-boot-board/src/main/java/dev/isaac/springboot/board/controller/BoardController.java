@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
@@ -34,5 +35,17 @@ public class BoardController {
         model.addAttribute("board", boardService.findById(id));
         return "board";
     }
+
+    // Delete
+    @ResponseBody // REST
+    @RequestMapping(value="/board/{id}", method = RequestMethod.DELETE)
+    public String deleteBoard(Model model,
+                              @PathVariable(name = "id") Long id,
+                              @PageableDefault(size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable) {
+        System.out.println("/board-delete/" + id);
+        return "";
+    }
+
+
 
 }

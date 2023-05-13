@@ -43,4 +43,10 @@ public class BoardService {
         }
     }
 
+    // Delete
+    public void deleteById(Long id) {
+        boardRepository.findById(id).ifPresent(boardEntity -> boardRepository.deleteById(boardEntity.getId()));
+    }
+
+
 }
