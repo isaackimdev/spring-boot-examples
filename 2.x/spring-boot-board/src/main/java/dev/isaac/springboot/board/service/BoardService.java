@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,8 +32,14 @@ public class BoardService {
         if (boardEntity.isPresent()) {
             return BoardDto.fromEntity(boardEntity.get());
         } else {
-            // throw new ResourceNotFoundException("예외처리");
-            return null;
+            return BoardDto.builder()
+                    .id(0L)
+                    .title("존재하지 않는 글입니다.")
+                    .content("존재하지 않는 글입니다.")
+                    .author("작성자 없음")
+                    .createdDate(LocalDateTime.now())
+                    .modifiedDate(LocalDateTime.now())
+                    .build();
         }
     }
 
