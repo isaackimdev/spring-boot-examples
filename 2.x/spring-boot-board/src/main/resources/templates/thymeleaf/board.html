@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Board Detail</title>
+  <style>
+    /* 다크 모드 스타일 */
+    body {
+      background-color: #1a1a1a;
+      color: #e6e6e6;
+    }
+
+    /* 컨테이너 스타일 */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 50px 0;
+    }
+
+    h2 {
+      font-size: 30px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .detail {
+      margin-top: 30px;
+    }
+
+    .detail h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .detail span {
+      font-size: 14px;
+      font-weight: 400;
+      color: #a6a6a6;
+      margin-right: 10px;
+    }
+
+    .detail p {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .button-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .button-container button {
+      background-color: #0080ff;
+      color: #e6e6e6;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Board Detail</h2>
+  <div class="detail">
+    <h3>Title</h3>
+    <p>게시글의 제목</p>
+    <h3>Content</h3>
+    <p>게시글의 내용</p>
+    <h3>Author</h3>
+    <span>작성자:</span><span>게시글의 작성자 이름</span>
+    <h3>Created Date</h3>
+    <span>작성일:</span><span>게시글의 작성일</span>
+    <h3>Modified Date</h3>
+    <span>수정일:</span><span>게시글의 수정일</span>
+  </div>
+  <div class="button-container">
+    <button>Edit</button>
+    <button>Delete</button>
+    <button>Back</button>
+  </div>
+</div>
+</body>
+</html>

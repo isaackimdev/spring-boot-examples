@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BoardList</title>
+    <title>Board List</title>
     <style>
         /* 테이블 스타일 */
         table {
@@ -87,15 +87,21 @@
             text-align: center;
         }
 
-        /* 현재 페이지 버튼 스타일 */
-        li.active a {
-            background-color: #0080ff;
-            color: #fff;
-        }
-
         /* 방문한 페이지 버튼 스타일 */
         li a:visited {
             color: #e6e6e6;
+        }
+
+        /* 현재 페이지 버튼 스타일 */
+        li.active a {
+            color: #0080ff;
+        }
+
+        button {
+            background: #0080ff;
+            color: #e6e6e6;
+            padding: 10px 20px;
+            border-radius: 5px;
         }
     </style>
 
@@ -104,7 +110,7 @@
 
     <div class="container">
         <h2>BoardList</h2>
-
+        <button>Post</button>
         <table>
             <thead>
             <tr>
