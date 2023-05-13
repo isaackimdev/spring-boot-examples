@@ -42,7 +42,8 @@ public class BoardController {
     public String deleteBoard(Model model,
                               @PathVariable(name = "id") Long id,
                               @PageableDefault(size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable) {
-        System.out.println("/board-delete/" + id);
+
+//        boardService.deleteById(id);
         return "";
     }
 

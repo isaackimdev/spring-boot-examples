@@ -72,14 +72,20 @@
     function deleteBoardById(boardId) {
       if (!confirm(boardId + " 번 글을 정말 삭제하시겠습니까?")) return;
 
-      // TODO 삭제 후 동작
+      // TODO thymeleaf 페이지 변수 받기
+      location.href = "/boardList?page=" + 0
+
+      /*
       axios.delete("/board/" + boardId)
               .then(response => {
                 console.log(response)
+
               })
               .catch(error => {
                 console.log("board axios error : " + error)
               });
+
+       */
     }
 
 
