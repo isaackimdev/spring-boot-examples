@@ -31,7 +31,7 @@ public class BoardController {
                            @PageableDefault(size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable) {
 
         model.addAttribute("pageable", pageable);
-
+        model.addAttribute("board", boardService.findById(id));
         return "board";
     }
 

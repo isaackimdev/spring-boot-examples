@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,5 +25,15 @@ public class BoardService {
         return new PageImpl<>(boardDtos, pageable, boardEntities.getTotalElements());
     }
 
+    // Read
+    public BoardDto findById(Long id) {
+        Optional<BoardEntity> boardEntity = boardRepository.findById(id);
+        if (boardEntity.isPresent()) {
+            return BoardDto.fromEntity(boardEntity.get());
+        } else {
+            // throw new ResourceNotFoundException("예외처리");
+            return null;
+        }
+    }
 
 }

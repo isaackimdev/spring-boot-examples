@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -69,20 +69,20 @@
   <h2>Board Detail</h2>
   <div class="detail">
     <h3>Title</h3>
-    <p>게시글의 제목</p>
+    <p th:text="${board.getTitle()}">게시글의 제목</p>
     <h3>Content</h3>
-    <p>게시글의 내용</p>
+    <p th:text="${board.getContent()}">게시글의 내용</p>
     <h3>Author</h3>
-    <span>작성자:</span><span>게시글의 작성자 이름</span>
+    <span>작성자:</span><span th:text="${board.getAuthor()}">게시글의 작성자 이름</span>
     <h3>Created Date</h3>
-    <span>작성일:</span><span>게시글의 작성일</span>
+    <span>작성일:</span><span th:text="${board.getCreatedDate()}">게시글의 작성일</span>
     <h3>Modified Date</h3>
-    <span>수정일:</span><span>게시글의 수정일</span>
+    <span>수정일:</span><span th:text="${board.getModifiedDate()}">게시글의 수정일</span>
   </div>
   <div class="button-container">
     <button>Edit</button>
     <button>Delete</button>
-    <button>Back</button>
+    <button onclick="window.history.go(-1)">Back</button>
   </div>
 </div>
 </body>
