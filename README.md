@@ -5,4 +5,4 @@
 - mybatis
 - thymeleaf
 - web
-- board
+- [Board project example](https://github.com/i-sak/spring-boot-example/tree/main/2.x/spring-boot-board)
