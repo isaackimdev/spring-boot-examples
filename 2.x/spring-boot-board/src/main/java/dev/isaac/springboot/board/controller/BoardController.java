@@ -42,11 +42,9 @@ public class BoardController {
     public String deleteBoard(Model model,
                               @PathVariable(name = "id") Long id,
                               @PageableDefault(size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable) {
-
-//        boardService.deleteById(id);
-        return "";
+        boardService.deleteById(id);
+        return "deleted";
     }
-
 
 
 }

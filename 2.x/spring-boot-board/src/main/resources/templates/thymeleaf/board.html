@@ -69,23 +69,18 @@
   <script>
 
     // 글 삭제 버튼 클릭
-    function deleteBoardById(boardId) {
+    function deleteBoardById(boardId, pageNumber) {
       if (!confirm(boardId + " 번 글을 정말 삭제하시겠습니까?")) return;
 
-      // TODO thymeleaf 페이지 변수 받기
-      location.href = "/boardList?page=" + 0
-
-      /*
       axios.delete("/board/" + boardId)
               .then(response => {
                 console.log(response)
-
+                location.href = "/boardList?page=" + pageNumber
               })
               .catch(error => {
                 console.log("board axios error : " + error)
+                alert("통신 오류 발생!");
               });
-
-       */
     }
 
 
@@ -110,7 +105,7 @@
   </div>
   <div class="button-container">
     <button>Edit</button>
-    <button th:onclick=" 'deleteBoardById(' + ${board.getId()}+ ')'">Delete</button>
+    <button th:onclick=" 'deleteBoardById(' + ${board.getId()} + ', ' + ${pageable.pageNumber} + ')'">Delete</button>
     <button onclick="window.history.go(-1)">Back</button>
   </div>
 </div>
