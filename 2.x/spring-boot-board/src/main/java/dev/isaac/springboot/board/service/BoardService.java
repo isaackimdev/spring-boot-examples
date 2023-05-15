@@ -48,5 +48,18 @@ public class BoardService {
         boardRepository.findById(id).ifPresent(boardEntity -> boardRepository.deleteById(boardEntity.getId()));
     }
 
+    // Create
+    public BoardDto createBoard(BoardDto.PostRequest boardPostRequest) {
+        return BoardDto.fromEntity(
+                boardRepository.save(
+                        BoardEntity.builder()
+                                .title(boardPostRequest.getTitle())
+                                .content(boardPostRequest.getContent())
+                                .author(boardPostRequest.getAuthor())
+                                .createdDate(LocalDateTime.now())
+                                .build()
+                )
+        );
+    }
 
 }

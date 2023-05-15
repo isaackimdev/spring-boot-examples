@@ -1,5 +1,6 @@
 package dev.isaac.springboot.board.controller;
 
+import dev.isaac.springboot.board.dtos.BoardDto;
 import dev.isaac.springboot.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -7,10 +8,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -46,5 +47,23 @@ public class BoardController {
         return "deleted";
     }
 
+    // Go to the bulletin board registration form
+    @RequestMapping(value="/boardForm", method = RequestMethod.GET)
+    public String goToBoardForm(Model model,
+                                @PageableDefault(size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable) {
+        return "boardForm";
+    }
+
+    // Create - Post board
+    @ResponseBody
+    @RequestMapping(value="/board", method = RequestMethod.POST)
+    public Map<String, Object> createBoard(@RequestBody BoardDto.PostRequest boardPostRequest,
+                                           @PageableDefault(size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable) {
+        Map <String, Object> map = new HashMap<>();
+        BoardDto savedBoard = boardService.createBoard(boardPostRequest);
+        map.put("data", savedBoard);
+        map.put("result", savedBoard == null ? "failed" : "succeed");
+        return map;
+    }
 
 }

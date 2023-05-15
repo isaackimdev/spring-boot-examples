@@ -1,9 +1,7 @@
 package dev.isaac.springboot.board.dtos;
 
 import dev.isaac.springboot.board.entities.BoardEntity;
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -29,5 +27,12 @@ public class BoardDto {
                 .createdDate(boardEntity.getCreatedDate() == null ? null : boardEntity.getCreatedDate())
                 .modifiedDate(boardEntity.getModifiedDate() == null ? null : boardEntity.getModifiedDate())
                 .build();
+    }
+
+    @Getter
+    public static class PostRequest {
+        private String title;
+        private String content;
+        private String author;
     }
 }
