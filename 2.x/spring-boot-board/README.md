@@ -17,11 +17,19 @@ Spring Boot를 사용한 게시판 구현 예제 입니다. Spring boot + Spring
 - [x] board 등록 기능 추가
 - [ ] board 수정 기능 추가
 
-### Application preview
+## Application preview
+
 Board List를 보여주는 화면 입니다.
+
 ![Board List](./image/board-list.png)
+
 Board 상세 보기 화면 입니다.
+
 ![Board Detail](./image/board-detail.png)
+
+Board Form 게시글 입력 화면 입니다.
+
+![Board Form](./image/board-form.png)
 
 ### init-project
 ![start](./image/start.png)
