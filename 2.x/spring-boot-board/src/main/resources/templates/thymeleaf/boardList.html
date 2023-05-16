@@ -103,6 +103,22 @@
             padding: 10px 20px;
             border-radius: 5px;
         }
+
+        /* 버튼 스타일 */
+        .button {
+            display: inline-block;
+            background: #0080ff;
+            color: #e6e6e6;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .button:hover {
+            background: #0066cc;
+        }
+
     </style>
 
 </head>
@@ -110,7 +126,7 @@
 
     <div class="container">
         <h2>Board List</h2>
-        <button onclick="location.href='/boardForm'">Post</button>
+        <a th:href="@{/boardForm(page=${boardList.number})}" class="button">Post</a>
         <table>
             <thead>
             <tr>

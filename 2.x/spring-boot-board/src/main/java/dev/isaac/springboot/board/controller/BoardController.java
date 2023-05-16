@@ -51,6 +51,7 @@ public class BoardController {
     @RequestMapping(value="/boardForm", method = RequestMethod.GET)
     public String goToBoardForm(Model model,
                                 @PageableDefault(size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable) {
+        model.addAttribute("pageable", pageable);
         return "boardForm";
     }
 

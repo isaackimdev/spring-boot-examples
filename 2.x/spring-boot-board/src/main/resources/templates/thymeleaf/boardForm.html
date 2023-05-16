@@ -76,15 +76,20 @@
   <script>
 
     // 글 등록 폼 submit
-    function submitBoardForm() {
+    function submitBoardForm(pageNumber, event) {
+      event.preventDefault();
+
       const form = document.getElementById("boardForm");
-      const formData = new FormData();
-      // TODO check
-      axios.post("/board", formData)
+
+      axios.post("/board", {
+        "title" : form[0].value,
+        "content" : form[1].value,
+        "author" : form[2].value
+      })
               .then(response => {
                 console.log(response)
                 alert("글이 등록되었습니다.");
-                location.href = "/boardList"
+                location.href = "/boardList?page=" + pageNumber
               })
               .catch(error => {
                 console.log("board axios error : " + error)
@@ -102,7 +107,7 @@
     <input type="text" name="title" placeholder="Title">
     <textarea name="content" placeholder="Content"></textarea>
     <input type="text" name="author" placeholder="Author">
-    <input type="submit" value="Submit" onclick="submitBoardForm(); return false;">
+    <input type="submit" value="Submit" th:onclick=" 'submitBoardForm('  + ${pageable.pageNumber} +  ', event)' ">
   </form>
   <button onclick="window.history.go(-1)">Back</button>
 </div>
