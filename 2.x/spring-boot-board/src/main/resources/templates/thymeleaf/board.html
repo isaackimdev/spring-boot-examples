@@ -67,6 +67,11 @@
   </style>
 
   <script>
+    // 글 수정 버튼 클릭
+    function updateBoardForm(boardId, pageNumber) {
+      location.href = "/boardForm?boardId="+boardId + "&page="+ pageNumber;
+    }
+
 
     // 글 삭제 버튼 클릭
     function deleteBoardById(boardId, pageNumber) {
@@ -104,8 +109,8 @@
     <span>수정일:</span><span th:text="${board.getModifiedDate()}">게시글의 수정일</span>
   </div>
   <div class="button-container">
-    <button>Edit</button>
-    <button th:onclick=" 'deleteBoardById(' + ${board.getId()} + ', ' + ${pageable.pageNumber} + ')'">Delete</button>
+    <button th:onclick="'updateBoardForm(' + ${board.getId()} + ', ' + ${pageable.pageNumber} + ')'">Edit</button>
+    <button th:onclick="'deleteBoardById(' + ${board.getId()} + ', ' + ${pageable.pageNumber} + ')'">Delete</button>
     <button onclick="window.history.go(-1)">Back</button>
   </div>
 </div>

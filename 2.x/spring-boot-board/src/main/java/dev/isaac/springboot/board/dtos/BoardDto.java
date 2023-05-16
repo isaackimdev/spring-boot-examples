@@ -31,6 +31,7 @@ public class BoardDto {
 
     @Getter
     public static class PostRequest {
+        private Long id;
         private String title;
         private String content;
         private String author;

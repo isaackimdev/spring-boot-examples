@@ -62,4 +62,23 @@ public class BoardService {
         );
     }
 
+    // modifyMoard()
+    public BoardDto modifyBoard(BoardDto.PostRequest boardPostRequest) {
+
+        Optional<BoardEntity> selectBoardEntity = boardRepository.findById(boardPostRequest.getId());
+        if(selectBoardEntity.isEmpty()) {
+            return null;
+        }
+
+        selectBoardEntity.ifPresent(
+                boardEntity -> {
+                    boardEntity.setTitle(boardPostRequest.getTitle().equals(boardEntity.getTitle()) ? boardEntity.getTitle() : boardPostRequest.getTitle());
+                    boardEntity.setContent(boardPostRequest.getContent().equals(boardEntity.getContent()) ? boardEntity.getContent() : boardPostRequest.getContent());
+                    boardEntity.setAuthor(boardPostRequest.getAuthor().equals(boardEntity.getAuthor()) ? boardEntity.getAuthor() : boardPostRequest.getAuthor());
+                    boardEntity.setModifiedDate(LocalDateTime.now());
+                    boardRepository.save(boardEntity);
+                }
+        );
+        return BoardDto.fromEntity(selectBoardEntity.get());
+    }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -50,18 +51,26 @@ public class BoardController {
     // Go to the bulletin board registration form
     @RequestMapping(value="/boardForm", method = RequestMethod.GET)
     public String goToBoardForm(Model model,
+                                @RequestParam(name = "boardId", defaultValue = "", required = false) String boardId,
                                 @PageableDefault(size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable) {
+        model.addAttribute("board", boardId.equals("") ? BoardDto.builder().build() : boardService.findById(Long.parseLong(boardId)));
         model.addAttribute("pageable", pageable);
         return "boardForm";
     }
 
-    // Create - Post board
+    // Create/Modify - Post board
+    // Post - Patch or Put 으로 처리도 가능하나 board example 정도여서 POST 내에서 분기 처리함.
     @ResponseBody
     @RequestMapping(value="/board", method = RequestMethod.POST)
     public Map<String, Object> createBoard(@RequestBody BoardDto.PostRequest boardPostRequest,
                                            @PageableDefault(size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable) {
         Map <String, Object> map = new HashMap<>();
-        BoardDto savedBoard = boardService.createBoard(boardPostRequest);
+        BoardDto savedBoard = null;
+        if (boardPostRequest.getId() == null) {
+            savedBoard = boardService.createBoard(boardPostRequest);
+        } else {
+            savedBoard = boardService.modifyBoard(boardPostRequest);
+        }
         map.put("data", savedBoard);
         map.put("result", savedBoard == null ? "failed" : "succeed");
         return map;
