@@ -26,6 +26,14 @@ public class BoardService {
         return new PageImpl<>(boardDtos, pageable, boardEntities.getTotalElements());
     }
 
+    // Read All by Keyword
+    public Page<BoardDto> findAllByKeyword(String keyword, Pageable pageable) {
+        Page<BoardEntity> boardEntities = boardRepository.findAllByTitleContainsOrContentContaining(keyword, keyword, pageable);
+        List<BoardDto> boardDtos = boardEntities.getContent().stream().map(BoardDto::fromEntity).collect(Collectors.toList());
+        return new PageImpl<>(boardDtos, pageable, boardEntities.getTotalElements());
+    }
+
+
     // Read
     public BoardDto findById(Long id) {
         Optional<BoardEntity> boardEntity = boardRepository.findById(id);

@@ -22,8 +22,14 @@ public class BoardController {
     // Read all
     @RequestMapping(value = "/boardList", method = RequestMethod.GET)
     public String boardList(Model model,
+                            @RequestParam(name = "keyword", defaultValue = "",required = false) String keyword,
                             @PageableDefault(size = 10, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable) {
-        model.addAttribute("boardList", boardService.findAll(pageable));
+        if (keyword.equals("")) {
+            model.addAttribute("boardList", boardService.findAll(pageable));
+        } else {
+            model.addAttribute("boardList", boardService.findAllByKeyword(keyword,pageable));
+        }
+
         return "boardList";
     }
 

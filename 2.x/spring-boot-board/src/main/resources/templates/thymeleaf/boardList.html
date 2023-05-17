@@ -121,12 +121,25 @@
 
     </style>
 
+    <script>
+
+        // keyword 검색
+        function findAllByKeyword () {
+            location.href = "/boardList?keyword=" + document.getElementById("keyword").value;
+        }
+
+    </script>
 </head>
 <body>
 
     <div class="container">
         <h2>Board List</h2>
         <a th:href="@{/boardForm(page=${boardList.number})}" class="button">Post</a>
+
+        <p style="float: right;">
+            검색어 : <input type="input" name="keyword" id="keyword" style="height: 20px; margin: 10px;">
+            <button onclick="findAllByKeyword()">search</button>
+        </p>
         <table>
             <thead>
             <tr>

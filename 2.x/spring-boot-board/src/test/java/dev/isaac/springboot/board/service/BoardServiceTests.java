@@ -43,4 +43,9 @@ public class BoardServiceTests {
         boardService.findAll(PageRequest.of(2, 10)).stream().forEach(System.out::println);
     }
 
+    @Test
+    @DisplayName("findAllByKeyword")
+    public void findAllByKeywordTest() {
+        boardService.findAllByKeyword("hello", PageRequest.of(0, 10)).stream().forEach(System.out::println);
+    }
 }

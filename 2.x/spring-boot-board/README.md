@@ -17,6 +17,7 @@ Spring Boot를 사용한 게시판 구현 예제 입니다. Spring boot + Spring
 - [x] board 등록 기능 추가
 - [x] board 수정 기능 추가
 - [x] boardForm 에 등록/수정 기능 적용
+- [x] keyword 검색 기능 추가
 
 ## Application preview
 
@@ -31,6 +32,10 @@ Board 상세 보기 화면 입니다.
 Board Form 게시글 입력 화면 입니다.
 
 ![Board Form](./image/board-form.png)
+
+Board List - Keyword Search 화면 입니다.
+
+![Board List Keyword](./image/board-list-by-keword.png)
 
 ### init-project
 ![start](./image/start.png)

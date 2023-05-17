@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -67,6 +68,16 @@ public class BoardRepositoryTests {
         System.out.println("--------------------------------------------------");
         boardRepository.findAll(PageRequest.of(1, 10)).stream().forEach(System.out::println);
     }
+
+    // Read All Keyword Test
+    @Test
+    @DisplayName("selectAllByKeyword")
+    public void selectAllByKeyword() {
+        String keyword = "수정";
+        Pageable pageable = PageRequest.of(0, 10);
+        boardRepository.findAllByTitleContainsOrContentContaining(keyword, keyword, pageable).getContent().stream().forEach(System.out::println);
+    }
+
 
     // Update
     @Test
