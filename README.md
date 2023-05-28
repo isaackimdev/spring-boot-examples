@@ -1,9 +1,9 @@
 # Spring boot examples
 
 ## 2.x
-- jpa
-- mybatis
-- thymeleaf
-- web
+- [jpa](./2.x/spring-boot-jpa)
+- [mybatis](./2.x/spring-boot-mybatis)
+- [thymeleaf](./2.x/spring-boot-thymeleaf)
+- [web](./2.x/spring-boot-web)
 - [Board project](./2.x/spring-boot-board)
 - [Restful app](./2.x/spring-boot-restapp)
