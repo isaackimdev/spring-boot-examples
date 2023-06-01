@@ -1,5 +1,6 @@
 package dev.isaac.springbootjwt.security;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -39,6 +40,9 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public String getSubject(String token) {
-        return null;
+        Claims claims = Jwts.parser()
+                .setSigningKey(DatatypeConverter.parseBase64Binary(secretKey))
+                .parseClaimsJws(token).getBody();
+        return claims.getSubject();
     }
 }

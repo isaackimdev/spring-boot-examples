@@ -15,10 +15,12 @@ public class SecurityServiceTests {
      * token check url : https://jwt.io/
      * */
     @Test
-    @DisplayName("createTokenTest")
+    @DisplayName("createTokenAndGetSubjectTest")
     public void createTokenTest() {
-        String token = securityService.createToken("Hello", 50000);
+        String token = securityService.createToken("Hello world", 50000);
         System.out.println("token : " + token);
+        String subject = securityService.getSubject(token);
+        System.out.println("subject : " + subject);
     }
 
 }
