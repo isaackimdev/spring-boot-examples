@@ -7,3 +7,5 @@
 - [web](./2.x/spring-boot-web)
 - [Board project](./2.x/spring-boot-board)
 - [Restful app](./2.x/spring-boot-restapp)
+- [jwt](./2.x/spring-boot-jwt)
+- [swagger](./2.x/spring-boot-swagger)
