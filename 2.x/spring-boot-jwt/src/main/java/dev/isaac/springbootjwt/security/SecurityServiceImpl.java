@@ -14,7 +14,7 @@ import java.util.Date;
 @Service
 public class SecurityServiceImpl implements SecurityService {
 
-    private static final String secretKey = "jwt12345";
+    private static final String secretKey = "4C8kum4LxyKWYLM78sKdXrzb8jDCFyfX";
 
     /**
      * @param subject 토큰에 넣을 내용

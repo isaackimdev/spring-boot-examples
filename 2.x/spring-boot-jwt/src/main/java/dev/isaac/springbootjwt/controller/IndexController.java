@@ -19,7 +19,7 @@ public class IndexController {
 
     @GetMapping(value = "/generate-token")
     public String createToken(@RequestParam("subject") String subject) {
-        return securityService.createToken(subject, 100000);
+        return securityService.createToken(subject, 1000 * 60 * 60); // 1 hour
     }
 
     @GetMapping(value = "/get-subject")

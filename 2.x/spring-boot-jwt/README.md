@@ -1,11 +1,15 @@
 # Spring boot jwt
 이 프로젝트는 jwt 를 생성하고, jwt 에 담긴 내용을 확인할 수 있는 example 입니다.
 
+시간 표기
+- 시간은 millisecond 사용
+- 1 second = 1000 millisecond
+- ttlMillis : 1000 * 60 * 60 (1 hour) 
+
 주요 class : SecurityServiceImpl.java
 
 project config
 ![start](./image/start.png)
-
 
 Dependencies
 ```
