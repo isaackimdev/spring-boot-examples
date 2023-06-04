@@ -13,6 +13,6 @@ to do list
 - [x] entity set
 - [x] Spring Boot Security 기본 설정
 - [x] data settings
-- [ ] jwt 설정 추가
+- [x] jwt dependencies 추가
 - [ ] jwt 관련 코드 개발
 - [ ] Security + jwt 적용
