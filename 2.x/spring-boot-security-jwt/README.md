@@ -1,4 +1,7 @@
 # Spring boot security & jwt
+
+현, 미완성 프로젝트
+
 spring boot security & jwt 를 사용한 example project 입니다.
 
 project init config
@@ -21,3 +24,4 @@ to do list
   - [x] JwtAuthenticationEntryPoint
   - [x] JwtAccessDeniedHandler
 - [x] Security + jwt 적용 (SecurityConfig에서 jwt 설정 적용)
+- Test... token 발급이 제대로 실행되지 않고 있음.

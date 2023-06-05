@@ -27,6 +27,7 @@ public class JwtFilter extends GenericFilterBean {
     // Filtering logic
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        System.out.println("jwtFilter exec...");
         // doFilter role : jwt 인증정보를 SecurityContext에 저장하는 역할 수행
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String jwt = resolveToken(httpServletRequest);

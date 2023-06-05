@@ -12,4 +12,5 @@ public class IndexController {
     public ResponseEntity<String> hello() {
         return ResponseEntity.ok("Hello");
     }
+
 }
