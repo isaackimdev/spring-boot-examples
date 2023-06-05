@@ -14,5 +14,10 @@ to do list
 - [x] Spring Boot Security 기본 설정
 - [x] data settings
 - [x] jwt dependencies 추가
-- [ ] jwt 관련 코드 개발
-- [ ] Security + jwt 적용
+- [x] jwt 관련 코드 개발
+  - [x] TokenProvider
+  - [x] JwtFilter
+  - [x] JwtSecurityConfig
+  - [x] JwtAuthenticationEntryPoint
+  - [x] JwtAccessDeniedHandler
+- [x] Security + jwt 적용 (SecurityConfig에서 jwt 설정 적용)
