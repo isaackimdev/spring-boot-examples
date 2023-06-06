@@ -9,4 +9,3 @@
 - [spring-boot-restapp](./2.x/spring-boot-restapp)
 - [spring-boot-jwt](./2.x/spring-boot-jwt)
 - [spring-boot-swagger](./2.x/spring-boot-swagger)
-- [spring-boot-security-jwt]
