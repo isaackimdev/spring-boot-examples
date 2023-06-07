@@ -9,16 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class LogController {    // log test
     @GetMapping("/test1")
     public String test1() {
-        return "test1 : ";
+        for(int i = 0; i<100*100*100*100; i++);
+        return "test1";
     }
 
     @GetMapping("/test2")
     public String test2() {
-        return "test2 : ";
+        for(int i = 0; i<100*100*100*100*100; i++);
+        return "test2";
     }
     @GetMapping("/test3")
     public String test3() {
-        return "test3 : ";
+        for(long i = 0; i<100*100*100*100*100*10L; i++);
+        return "test3";
     }
 
 }
