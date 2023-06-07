@@ -38,3 +38,7 @@ public class IndexController {
 @RestController 내부에 @Controller, @ResponseBody 가 포함되어 있다.
 @GetMapping 내부에는 @RequestMapping(value="/", method = RequestMethod.GET) 이 포함되어 있다.
 
+기존의 @Controller, @ResponseBody 이 두 어노테이션을 사용해 json type 의 body 데이터를 응답하도록 합쳐 놓은 것이 @RestController 이다.
+
+---
+jwt set
