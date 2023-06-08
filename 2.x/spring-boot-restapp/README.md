@@ -3,6 +3,24 @@
 ### start
 ![start](./image/start.png)
 
+Entry Point / Start point
+```java
+@SpringBootApplication  // 컴포넌트 구성과 자동 구성
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+}
+```
+Spring Boot Annotation으로 기본적인 설정을 마치고 시작할 수 있음.
+- @SpringBootApplication
+  - @Configuration
+  - @ComponentScan
+  - @EnableAutoConfiguration
+
+
 ### Spring-WebMVC 에서 RESTful 지원
 아래 3개 Annotation 사용
 - @Controller
