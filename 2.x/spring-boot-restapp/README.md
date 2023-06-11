@@ -58,5 +58,10 @@ public class IndexController {
 
 기존의 @Controller, @ResponseBody 이 두 어노테이션을 사용해 json type 의 body 데이터를 응답하도록 합쳐 놓은 것이 @RestController 이다.
 
----
-jwt set
+
+
+## RESTful API 구현
+인접한 Layer 간의 호출로 구현되어 있다. 
+
+Client > Controller > Service > Repository
+
