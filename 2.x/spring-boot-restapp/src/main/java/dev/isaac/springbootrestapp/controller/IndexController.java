@@ -35,18 +35,17 @@ public class IndexController {
         return "Hello world..";
     }
 
-    @GetMapping("/jwt/generate")
-    public Map<String, Object> createJwt(@RequestParam String subject) {
-        String jwt = jwtService.createToken(subject, 1000 * 60 * 60 * 24);
+    @GetMapping("/security/generate/token")
+    public Map<String, Object> generateToken(@RequestParam(value = "subject") String subject) {
+        String token = jwtService.createToken(subject, 1000 * 60 * 60 * 24);
         Map<String, Object> map = new HashMap<>();
         map.put("subject", subject);
-        map.put("jwt", jwt);
+        map.put("token", token);
         return map;
     }
 
-    @GetMapping("/jwt/get-subject")
-    public String getSubject(@RequestParam String jwt) {
-        String subject = jwtService.getSubject(jwt);
-        return subject;
+    @GetMapping("/security/get/subject")
+    public String getSubject(@RequestParam("token") String token) {
+        return jwtService.getSubject(token);
     }
 }

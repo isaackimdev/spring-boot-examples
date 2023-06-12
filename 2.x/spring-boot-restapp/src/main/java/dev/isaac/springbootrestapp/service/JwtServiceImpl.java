@@ -18,9 +18,9 @@ public class JwtServiceImpl implements JwtService {
     @Override
     public String createToken(String subject, long ttlMillis) {
         if (ttlMillis <= 0) {
-            throw new RuntimeException("token 만료시간은 0보다 커야 합니다.");
+            throw new RuntimeException("Expiry time must be greater than Zero.["+ttlMillis+"]");
         }
-
+        // The JWT signature algorithm we will be using to sign the token
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(secretKey);
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
