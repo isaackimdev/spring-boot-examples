@@ -15,8 +15,9 @@ public class LoggingAspect {
     Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
     // point-cut  : spring-aop LogControoler 전체 메소드 단위에 setLog 를 실행함.
+    // point-cut + advice 를 aspect 라고 한다.
     @Around("execution(* dev.isaac.springbootrestapp.controller.LogController.*(..))")
-    // advice 그리고, point-cut + advice 를 aspect 라고 한다.
+    // advice
     public Object setLog(ProceedingJoinPoint pjp) throws Throwable {
         logger.info("start : " + pjp.getSignature().getDeclaringTypeName() + "/" + pjp.getSignature().getName());
 
@@ -39,4 +40,6 @@ public class LoggingAspect {
     public void logger() {
         System.out.println("[before test] create request...");
     }
+
+
 }

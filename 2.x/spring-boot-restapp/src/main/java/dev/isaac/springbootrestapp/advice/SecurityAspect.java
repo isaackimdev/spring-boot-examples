@@ -24,7 +24,7 @@ public class SecurityAspect {
                 (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
 
-        String token = request.getParameter("token");
+        String token = request.getParameter("token"); // 쉽게 Test 할 수 있게 parameter를 사용함
         System.out.println("token : " + token);
 
         // checks for token in request header
