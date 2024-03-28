@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: springboot
+
+server:
+  port: 8081

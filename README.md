@@ -11,4 +11,5 @@
 - [spring-boot-swagger](./2.x/spring-boot-swagger)
 
 ## 3.x
+- [spring-boot](./3.x/spring-boot)
 - [springboot-with-vscode](./3.x/springboot-with-vscode/)
