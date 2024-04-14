@@ -25,6 +25,22 @@ public class ProductService {
         productRepository.save(product.get());
     }
 
+    public ProductDto getProduct(String name) {
+        Optional<Product> product = productRepository.findByName(name);
+        return ProductDto.from(product.get());
+    }
+
+    public ProductDto saveProduct(String name, long price) {
+        Product product = new Product();
+        product.setName(name);
+        product.setPrice(price);
+
+        productRepository.save(product);
+
+        return ProductDto.from(product);
+    }
+
+
     /*
     // 프로그래밍적인 방식
     private final PlatformTransactionManager transactionManager;
