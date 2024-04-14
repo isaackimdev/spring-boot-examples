@@ -24,6 +24,10 @@ dependencies {
 
 	implementation 'org.projectlombok:lombok:1.18.32'
 	testImplementation 'org.projectlombok:lombok:1.18.32'
+	annotationProcessor('org.projectlombok:lombok:1.18.32')
+
+	implementation group: 'com.h2database', name: 'h2', version: '2.2.224'
+	testImplementation group: 'com.h2database', name: 'h2', version: '2.2.224'
 
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '3.2.4'
 	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '3.2.4'
