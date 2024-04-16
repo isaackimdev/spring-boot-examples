@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
-public class ProductController {
+public class ProductAController {
     private final ProductService productService;
 
     @GetMapping("/products/{name}")
