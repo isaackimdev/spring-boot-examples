@@ -22,10 +22,10 @@
 
 2. 프로젝트 아키텍처
    1. 엔티티 설계
-      - User Entity
+      - User Entity (회원 엔티티)
         1. 회원 정보를 저장하는 엔티티
-        2. 이름, 주소, 이메일, 연락처 등
-        3. 로그인 서비스 연동
+        2. 이름, 주소, 이메일, 연락처 등 정보 포함
+        3. 추후 로그인 서비스 연동 (스프링 시큐리티 활용)
 
       - Product Entity
         1. 상품 정보
@@ -70,6 +70,27 @@
          - UserController
          - ProductController
          - OrderController
+
+3. 도메인 설계
+   1. 회원 레포티토리 설계
+      - User 엔티티를 다루기 위한 레포지토리 인터페이스
+      - Spring Data JPA 활용하여 구현
+   2. 회원 서비스 설계
+      - User 서비스 구현 (회원 관련 비즈니스 로직 처리)
+      - user Repository와 연계
+   3. 회원 컨트롤러 설계
+      - User 컨트롤러 생성
+      - 회원 등록, 회원 정보 수정, 회원 정보 조회와 관련된 엔드포인트 제공
+         - API 방식 : 클라이언트 요청을 받고 처리 후 응답하는 형태
+         - SSR 방식 : 모델 객체를 뷰에 전달하여, 뷰에서 화면에 노출 시키는 형태
+
+4. API 설계
+   1. 회원 등록 : POST /api/users
+   2. 회원 정보 수정 : PUT or PATCH /api/users/{id}
+   3. 회원 정보 조회 : GET /api/users{id}
+   4. 회원 정보 삭제 : DELETE /api/users/{id}
+
+
 
 
 ---
