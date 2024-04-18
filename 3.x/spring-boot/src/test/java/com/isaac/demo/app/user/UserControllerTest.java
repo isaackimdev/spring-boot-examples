@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -40,5 +41,18 @@ class UserControllerTest {
 
         verify(userService).getUser(userId);
     }
+
+    @Test
+    void deleteUserTest() throws Exception {
+        Long userId = 1L;
+
+        given(userService.removeUser(userId)).willReturn(userId);
+
+        mockMvc.perform(delete("/api/users/"+userId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(userId))
+                .andDo(print());
+    }
+
 
 }
