@@ -14,7 +14,7 @@
 8. Commerce Project 로 Development
 
 ---
-스프링 프로젝트 구성하기
+## 스프링 프로젝트 구성하기
 1. 프로젝트 비즈니스 로직 / 필요 기능 정의 / 커머스 어플리케이션 기능 정의
    1. 회원 : 회원 등록, 회원 정보 수정, 회원 정보 조회, 로그인 기능 구현
    2. 상품 : 상품 등록, 상품 목록 조회, 상품 상세 정보 조회 기능 구현
@@ -71,28 +71,74 @@
          - ProductController
          - OrderController
 
-3. 도메인 설계
-   1. 회원 레포티토리 설계
-      - User 엔티티를 다루기 위한 레포지토리 인터페이스
-      - Spring Data JPA 활용하여 구현
-   2. 회원 서비스 설계
-      - User 서비스 구현 (회원 관련 비즈니스 로직 처리)
-      - user Repository와 연계
-   3. 회원 컨트롤러 설계
-      - User 컨트롤러 생성
-      - 회원 등록, 회원 정보 수정, 회원 정보 조회와 관련된 엔드포인트 제공
-         - API 방식 : 클라이언트 요청을 받고 처리 후 응답하는 형태
-         - SSR 방식 : 모델 객체를 뷰에 전달하여, 뷰에서 화면에 노출 시키는 형태
-
+### 회원 도메인 설계
+1. 회원 레포티토리 설계
+   - User 엔티티를 다루기 위한 레포지토리 인터페이스
+   - Spring Data JPA 활용하여 구현
+2. 회원 서비스 설계
+   - User 서비스 구현 (회원 관련 비즈니스 로직 처리)
+   - user Repository와 연계
+3. 회원 컨트롤러 설계
+   - User 컨트롤러 생성
+   - 회원 등록, 회원 정보 수정, 회원 정보 조회와 관련된 엔드포인트 제공
+     - API 방식 : 클라이언트 요청을 받고 처리 후 응답하는 형태
+     - SSR 방식 : 모델 객체를 뷰에 전달하여, 뷰에서 화면에 노출 시키는 형태
 4. API 설계
    1. 회원 등록 : POST /api/users
    2. 회원 정보 수정 : PUT or PATCH /api/users/{id}
    3. 회원 정보 조회 : GET /api/users{id}
    4. 회원 정보 삭제 : DELETE /api/users/{id}
 
+### 상품 도메인 설계
+1. 상품 엔티티 설계
+   - 상품 정보를 저장하는 엔티티
+   - 상품명, 상품 가격, 상품 설명, 재고량, 카테고리 등 정보 포함
+2. 상품 레포지토리 설계
+   - Product 엔티티를 다루기 위한 레포지토리 인터페이스 생성
+   - Spring Data JPA 활용하여 구현
+3. 상품 서비스 설계
+   1. Product 서비스 구현 (상품 관련 비즈니스 로직 처리)
+      - 상품 생성 기능
+      - 상품 수정 기능
+      - 상품 상세정보 조회 기능
+      - 상품 전체 조회 기능 등 제공
+   2. Product 레포지토리와 연계
+4. 상품 컨트롤러 설계
+   1. Product 컨트롤러 생성
+   2. 상품 생성, 수정, 상품 상세 조회, 상품 전체 조회와 관련된 엔드포인트 제공
+5. API 설계
+   1. 상품 생성 : POST /api/products
+   2. 상품 수정 : PUT /api/products/{id}
+   3. 상품 상세 조회 : GET /api/products/{id}
+   4. 상품 전체 조회 : GET /api/products
+
+### 주문 도메인 설계
+1. 주문 엔티티 설계
+   1. 주문 정보를 저장하는 엔티티
+   2. 주문 일자, 주문 고객, 배송지, 주문 상태, 주문 상품 등 포함
+2. 주문 레포지토리 설계
+   1. Order 엔티티를 다루기 위한 레포지토리 인터페이스 생성
+   2. Spring Data JPA 활용하여 구현
+3. 주문 서비스 설계
+   1. Order 서비스 구현 (주문 관련 비즈니스 로직 처리)
+      - 주문 생성 기능
+      - 주문 취소 기능
+      - 주문 상세정보 조회 기능
+   2. OrderRepository, UserRepository, ProductRepository 연계
+4. 주문 컨트롤러 설계
+   1. Order 컨트롤러 생성
+   2. 주문 생성, 주문 취소, 주문 상세 정보 조회 등과 관련된 엔드포인트 제공
+5. API 설계
+   1. 주문 생성 : POST /api/orders
+      - POST 요청에서는 request 바디에 데이터를 넣어 호출하도록 한다.
+   2. 주문 취소 : PUT /api/orders/{id}/cancel
+   3. 주문 상세 정보 조회 : GET /api/orders/{id}
 
 
+- users, products, orders 이러한 복수형 표현을 하는 것이 RestAPI 설계의 기초적인 규칙이다.
 
+
+   
 ---
 - [Spring Quickstart Guide](https://spring.io/quickstart)
 - [rest-service](https://spring.io/guides/gs/rest-service)
