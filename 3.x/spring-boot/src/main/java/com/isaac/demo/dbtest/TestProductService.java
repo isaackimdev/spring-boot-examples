@@ -2,42 +2,38 @@ package com.isaac.demo.dbtest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService {
-    private final ProductRepository productRepository;
+public class TestProductService {
+    private final TestProductRepository productRepository;
 
     // 선언적인 방식
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void updateProductPrice(Long productId, long newPrice) {
-        Optional<Product> product = productRepository.findById(productId);
+        Optional<TestProduct> product = productRepository.findById(productId);
         product.get().setPrice(newPrice);
         productRepository.save(product.get());
     }
 
-    public ProductDto getProduct(String name) {
-        Optional<Product> product = productRepository.findByName(name);
-        return ProductDto.from(product.get());
+    public TestProductDto getProduct(String name) {
+        Optional<TestProduct> product = productRepository.findByName(name);
+        return TestProductDto.from(product.get());
     }
 
-    public ProductDto saveProduct(String name, long price) {
-        Product product = new Product();
+    public TestProductDto saveProduct(String name, long price) {
+        TestProduct product = new TestProduct();
         product.setName(name);
         product.setPrice(price);
 
         productRepository.save(product);
 
-        return ProductDto.from(product);
+        return TestProductDto.from(product);
     }
 
 

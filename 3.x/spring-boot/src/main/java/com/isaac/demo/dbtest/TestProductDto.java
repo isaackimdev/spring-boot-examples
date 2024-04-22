@@ -7,13 +7,13 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class ProductDto {
+public class TestProductDto {
     private String name;
     private long price;
 
     // static factory method
-    public static ProductDto from(Product product) {
-        return ProductDto.builder()
+    public static TestProductDto from(TestProduct product) {
+        return TestProductDto.builder()
                 .name(product.getName())
                 .price(product.getPrice())
                 .build();

@@ -8,17 +8,18 @@ import java.util.Optional;
 
 @SpringBootTest
 public class ProductRepositoryTest {
-    @Autowired ProductRepository repository;
+    @Autowired
+    TestProductRepository repository;
 
     @Test
     void testSaveProduct() {
-        Product product = new Product();
+        TestProduct product = new TestProduct();
         product.setName("spring lecture");
         product.setPrice(1000000);
 
         repository.save(product);
 
-        Optional<Product> findProduct = repository.findByName("spring lecture");
+        Optional<TestProduct> findProduct = repository.findByName("spring lecture");
 
         System.out.println("findProduct : " + findProduct.get().getName());
     }

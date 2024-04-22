@@ -13,14 +13,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(ProductAController.class)
+@WebMvcTest(TestProductAController.class)
 class ProductAControllerTest {
     @Autowired private MockMvc mockMvc; // controller url 호출
-    @MockBean private ProductService productService;
+    @MockBean private TestProductService productService;
 
     @Test
     void getProductTest() throws Exception {
-        given(productService.getProduct("book")).willReturn(ProductDto.builder().name("book").price(10000).build());
+        given(productService.getProduct("book")).willReturn(TestProductDto.builder().name("book").price(10000).build());
 
         String name = "book";
 
@@ -36,9 +36,9 @@ class ProductAControllerTest {
 
     @Test
     void postProductTest() throws Exception {
-        given(productService.saveProduct("book", 10000)).willReturn(ProductDto.builder().name("book").price(10000).build());
+        given(productService.saveProduct("book", 10000)).willReturn(TestProductDto.builder().name("book").price(10000).build());
 
-        ProductDto productDto = ProductDto.builder().name("book").price(10000).build();
+        TestProductDto productDto = TestProductDto.builder().name("book").price(10000).build();
 
         String testJson = new ObjectMapper().writeValueAsString(productDto);
 
