@@ -37,7 +37,8 @@ public class Order {
         orderItem.setOrder(this);
     }
 
-    public static Order from(User user, List<OrderItem> orderItems) {
+    // Param : List<OrderItem> orderItems
+    public static Order from(User user, OrderItem... orderItems) {
         Order order = new Order();
         order.setUser(user);
 
