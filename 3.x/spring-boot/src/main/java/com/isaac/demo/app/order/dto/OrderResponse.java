@@ -21,6 +21,7 @@ public class OrderResponse {
         return OrderResponse.builder()
                 .userId(order.getUser().getId())
                 .orderId(order.getId())
+                .orderStatus(order.getOrderStatus())
                 .orderItems(
                         order.getOrderItems().stream().map(OrderItemDto::from).toList())
                 .orderDate(order.getOrderDate())

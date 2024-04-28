@@ -29,7 +29,7 @@ public class OrderItem {
         orderItem.setProduct(product);
         orderItem.setOrderPrice(orderPrice);
         orderItem.setCount(count);
-        product.decrease(count);
+        // product.decrease(count);
         return orderItem;
     }
 

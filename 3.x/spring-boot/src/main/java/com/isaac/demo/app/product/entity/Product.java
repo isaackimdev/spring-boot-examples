@@ -26,6 +26,7 @@ public class Product {
         this.stock += quantity;
     }
 
+    /*
     public void decrease(long quantity) {
         long calculatedStock = stock - quantity;
 
@@ -35,5 +36,5 @@ public class Product {
 
         this.stock = calculatedStock;
     }
-
+    */
 }

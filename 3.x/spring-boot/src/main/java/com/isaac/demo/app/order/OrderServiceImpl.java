@@ -32,6 +32,7 @@ public class OrderServiceImpl implements OrderService {
         OrderItem orderItem = OrderItem.createOrderItem(product, discountPrice, orderRequest.getCount());
         Order order = Order.from(user, orderItem);
 
+        productRepository.decrease(orderRequest.getCount(), product.getId());
         orderRepository.save(order);
         return order.getId();
     }
