@@ -199,6 +199,18 @@
    2. 서버(Token) -> Token 검증 -> 응답 -> 클라이언트
    ```
 
+3. 로그인 연동하기
+   1. JWT를 활용한 로그인 연동 구현
+      1. 사용자 인증 설정
+         - UserDetailService 구현
+         - SecurityConfig 생성
+      2. 로그인 API 연동
+         - 로그인 API 추가
+      3. 토큰 검증
+         - JwtProvider
+      4. 기존 구현된 API에 적용
+
+
 
    
 ---
