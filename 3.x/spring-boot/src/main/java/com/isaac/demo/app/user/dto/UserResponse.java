@@ -1,8 +1,13 @@
 package com.isaac.demo.app.user.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.isaac.demo.app.user.entity.User;
+import com.isaac.demo.app.user.entity.UserRole;
 import lombok.Builder;
 import lombok.Value;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Value
 @Builder
@@ -11,12 +16,31 @@ public class UserResponse {
     private String address;
     private String email;
     private String phoneNumber;
+    private List<UserRole> roles = new ArrayList<>();
+
+    @JsonIgnore
+    private String token;
+
     public static UserResponse from(User user) {
-        return UserResponse.builder()
+        UserResponse userResponse = UserResponse.builder()
                 .name(user.getName())
                 .address(user.getAddress())
                 .email(user.getEmail())
                 .phoneNumber(user.getPhoneNumber())
                 .build();
+        user.getRoles().forEach(role -> userResponse.getRoles().add(role));
+        return userResponse;
+    }
+
+    public static UserResponse from(User user, String token) {
+        UserResponse userResponse = UserResponse.builder()
+                .name(user.getName())
+                .address(user.getAddress())
+                .email(user.getEmail())
+                .phoneNumber(user.getPhoneNumber())
+                .token(token)
+                .build();
+        user.getRoles().forEach(role -> userResponse.getRoles().add(role));
+        return userResponse;
     }
 }

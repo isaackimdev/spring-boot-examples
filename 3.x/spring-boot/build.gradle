@@ -34,6 +34,11 @@ dependencies {
 
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '3.2.4'
 
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
+	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
+	testImplementation("org.springframework.security:spring-security-test")
 }
 
 tasks.named('test') {
