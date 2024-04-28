@@ -1,6 +1,7 @@
 package com.isaac.demo.app.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.isaac.demo.app.user.entity.AgeInfo;
 import com.isaac.demo.app.user.entity.User;
 import com.isaac.demo.app.user.entity.UserRole;
 import lombok.Builder;
@@ -16,6 +17,7 @@ public class UserResponse {
     private String address;
     private String email;
     private String phoneNumber;
+    private AgeInfo ageInfo;
     private List<UserRole> roles = new ArrayList<>();
 
     @JsonIgnore
@@ -27,6 +29,7 @@ public class UserResponse {
                 .address(user.getAddress())
                 .email(user.getEmail())
                 .phoneNumber(user.getPhoneNumber())
+                .ageInfo(user.getAgeInfo())
                 .build();
         user.getRoles().forEach(role -> userResponse.getRoles().add(role));
         return userResponse;
@@ -39,6 +42,7 @@ public class UserResponse {
                 .email(user.getEmail())
                 .phoneNumber(user.getPhoneNumber())
                 .token(token)
+                .ageInfo(user.getAgeInfo())
                 .build();
         user.getRoles().forEach(role -> userResponse.getRoles().add(role));
         return userResponse;

@@ -1,5 +1,6 @@
 package com.isaac.demo.app.user.dto;
 
+import com.isaac.demo.app.user.entity.AgeInfo;
 import lombok.Builder;
 import lombok.Value;
 
@@ -11,4 +12,5 @@ public class UserRequest {
     private String email;
     private String phoneNumber;
     private String password;
+    private AgeInfo ageInfo;
 }

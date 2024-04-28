@@ -20,7 +20,7 @@ class UserServiceTest {
     @MockBean
     private UserRepository userRepository;
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Test
     public void joinUserTest() {

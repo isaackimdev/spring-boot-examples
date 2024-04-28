@@ -31,6 +31,10 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<UserRole> roles = new ArrayList<>();
 
+
+    @Enumerated(EnumType.STRING)
+    private AgeInfo ageInfo;
+
     public void giveUserRoles(List<UserRole> userRoles) {
         this.roles = userRoles;
         roles.forEach(userRole -> userRole.setUser(this));
