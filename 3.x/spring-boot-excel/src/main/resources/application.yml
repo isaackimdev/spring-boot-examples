@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: excel
+
+server:
+  port: 8081

@@ -12,4 +12,5 @@
 
 ## 3.x
 - [spring-boot](./3.x/spring-boot)
-- [springboot-with-vscode](./3.x/springboot-with-vscode/)
+- [springboot-with-vscode](./3.x/springboot-with-vscode)
+- [spring-boot-excel](./3.x/spring-boot-excel)
