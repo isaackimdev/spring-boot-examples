@@ -3,13 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+        function uploadExcel() {
+            var formData = new FormData();
+            var url = "/upload-ajax";
+            var excelInput = document.getElementsByName("excel");
+            var excel = excelInput[0].files[0];
+            console.log(excelInput[0].files[0]);
+            console.log(excel);
+
+            formData.append("excel", excel);
+
+            fetch(url, { method: 'POST', body: formData })
+                .then(res => res.json())
+                .catch(err => console.log(err));
+
+        }
+    </script>
 </head>
 <body>
-  <h2>Hello World</h2>
-  <form action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="excel">
-    <input type="submit" value="excel 업로드">
-  </form>
+
+    <h2>Hello World</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="excel">
+        <input type="submit" value="excel 업로드">
+    </form>
+
+    <input type="button" value="ajax excel 업로드" onclick="uploadExcel()">
+
 
 </body>
 </html>
