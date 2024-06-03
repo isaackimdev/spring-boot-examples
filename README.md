@@ -14,3 +14,4 @@
 - [spring-boot](./3.x/spring-boot)
 - [springboot-with-vscode](./3.x/springboot-with-vscode)
 - [spring-boot-excel](./3.x/spring-boot-excel)
+- [spring-boot-basics-examples](./3.x/spring-boot-basics-examples)
