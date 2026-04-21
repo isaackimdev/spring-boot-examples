@@ -1,5 +1,8 @@
 # Spring boot examples
 
+[spring quick start - initializr](https://start.spring.io/)
+
+
 ## 2.x
 - [spring-boot-jpa](./2.x/spring-boot-jpa)
 - [spring-boot-mybatis](./2.x/spring-boot-mybatis)
@@ -15,3 +18,6 @@
 - [springboot-with-vscode](./3.x/springboot-with-vscode)
 - [spring-boot-excel](./3.x/spring-boot-excel)
 - [spring-boot-basics-examples](./3.x/spring-boot-basics-examples)
+
+## 4.x
+- [spring-boot-ai](./4.x/spring-ai)
